@@ -91,6 +91,18 @@
 			<br />
 			<input type="submit" name="btnSure" id="btnSure" value="post测试" />
 		</form>
-		<hr/>		
+		<hr/>	
+        <h1>生产环境</h1>
+        <form name="form2" action="http://www.m-trauma.com/action/iss/http/action/FunctionAction" method="post">
+            <p>
+                功能号
+                <select id="function_id_2" name="function_id" onchange="changeContent_2()">
+                </select>
+            </p>
+            <textarea rows="10" cols="100" name="jsonContent" id="jsonContent" >{"head":{"userID":"880000000","sessionID":"xxx","funcNO":"000001"},"content":{"login_name":"880000000","service_password":"888888","login_type":"1"}}</textarea>
+            <br />
+            <input type="submit" name="btnSure" id="btnSure" value="post测试" />
+        </form>
+        <hr/>   			
 	</body>
 </html>
