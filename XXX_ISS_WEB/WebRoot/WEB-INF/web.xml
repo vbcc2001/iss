@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE PUBLIC>
 <web-app>
-	<display-name>issn</display-name>
+	<display-name>iss</display-name>
+    <listener>
+        <listener-class>com.xxx.iss.http.listener.Listener</listener-class>
+    </listener>	
+    <servlet>
+    <servlet-name>Servlet</servlet-name>
+        <servlet-class>com.xxx.iss.http.servlet.Servlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet</servlet-name>
+        <url-pattern>/action/*</url-pattern>
+    </servlet-mapping>    
 	<welcome-file-list><welcome-file>/iss/index.html</welcome-file></welcome-file-list>
 	<error-page><error-code>404</error-code><location>/iss/404.html</location></error-page>
     <error-page><error-code>500</error-code><location>/iss/500.html</location></error-page>
