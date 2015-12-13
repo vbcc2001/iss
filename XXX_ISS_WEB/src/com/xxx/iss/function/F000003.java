@@ -10,7 +10,7 @@ import com.xxx.iss.helper.StringHelper;
 import com.xxx.iss.jdbc.DBConfigure;
 import com.xxx.iss.jdbc.DataRow;
 
-public class F000002 extends BaseFunction   {
+public class F000003 extends BaseFunction   {
 
 	@Override
 	public ResponseParameter execute(RequestParameter requestParameter) throws Exception {
@@ -26,8 +26,8 @@ public class F000002 extends BaseFunction   {
 		}else{
 			//生成一个sessionID
 			String sessionID =StringHelper.getMD5(pat_name+String.valueOf(new Date().getTime()));
-			requestParameter.getParams().put("weixin_open_id", sessionID);
-			if(this.insert(requestParameter.getParams())>0 && this.insert2(requestParameter.getParams())>0){
+			requestParameter.getParams().put("patient_code", sessionID);
+			if(this.insert(requestParameter.getParams())>0 ){
 					List<DataRow> list = new ArrayList<DataRow>();
 					DataRow dataRow = new DataRow();
 					dataRow.put("id", sessionID);
@@ -41,25 +41,14 @@ public class F000002 extends BaseFunction   {
 		return response;
 	}
 	public int insert( Map<String,String> para) throws SQLException {	
-		Object arg[] = new Object[6];
-		arg[0]=para.get("pat_name");
-		arg[1]=para.get("pat_sex");
-		arg[2]=Integer.parseInt(para.get("pat_age"));
-		arg[3]=para.get("pat_phone");
-		arg[4]=para.get("weixin_open_id");
-		arg[5]=para.get("weixin_open_id");
-		String sql="INSERT INTO t_user_info(name,sex,age,phone,user_type,user_code,weixin_open_id,weixin_id) VALUES (?,?,?,?,'patient',?,?,'test')";
-		return getNewJdbcTemplate().update(sql,arg);
-	}
-	public int insert2( Map<String,String> para) throws SQLException {	
 		Object arg[] = new Object[10];
 		arg[0]=para.get("pat_name");
 		arg[1]=para.get("pat_sex");
 		arg[2]=Integer.parseInt(para.get("pat_age"));
 		arg[3]=para.get("pat_add");
 		arg[4]=para.get("pat_phone");
-		arg[5]=para.get("weixin_open_id");
-		arg[6]=para.get("weixin_open_id");
+		arg[5]=para.get("patient_code");
+		arg[6]=para.get("doc_id");
 		arg[7]=para.get("pat_ill_date");
 		arg[8]=para.get("pat_ill_type");
 		arg[9]=para.get("pat_hospital");

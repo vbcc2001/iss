@@ -43,37 +43,10 @@ function reset(){
 	$("#main").show();
 	$(".radmenu").removeClass("selected");
 }
-function score(){
-	var arr =[0,0,0,0,0,0];
-	var iss_score = 0;
-	var ais_score = 0;	
-	for(var i=0;i<c.length;i++){
-		for(var j=0;j<c[i].c.length;j++){
-			for(var k=0;k<c[i].c[j].c.length;k++){
-				if(c[i].c[j].c[k].check){
-					ais_score+= 1*c[i].c[j].c[k].val;
-					if(arr[i]<c[i].c[j].c[k].val){
-						arr[i]=c[i].c[j].c[k].val;
-					}
-				}
-			}
-		}
-	}
-	arr.sort(function(a,b){return b-a;});//从大到小排序
-	iss_score = arr[0]*arr[0]+arr[1]*arr[1]+arr[2]*arr[2];
-	$("#iss").html("ISS评分<br><span style='color:#000000;font-family: simsun;'>"+iss_score+"</span>");
-	$("#ais").html("AIS评分<br><span style='color:#000000;font-family: simsun;'>"+ais_score+"</span>");
-	if(iss_score<16){
-		$("#rank").html("严重程度<br>轻伤");
-	}else if(iss_score>=16 && iss_score<25){
-		$("#rank").html("严重程度<br>重伤");
-	}else{
-		$("#rank").html("严重程度<br>严重伤");	
-	}
-}
 $(function(){ 
 	//初始化弹出层
-	$('[data-toggle="popover"]').popover();
+	$('#pat_ill_date').datepicker({ language: "zh-CN" });
+	$('#ill_date').datepicker({ language: "zh-CN" });	
 	$(".radmenu").click(function(e){
 		var id = $(this).attr("id");
 		$(this).addClass("selected");

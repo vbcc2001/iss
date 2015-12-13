@@ -7,6 +7,7 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>ISS评分</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-datepicker.min.css">	
 	<link rel="stylesheet" href="css/style.css">	
   </head>
   <body class="background">
@@ -94,7 +95,7 @@
 					<label for="phone" class="col-xs-4 control-label">联系电话</label>
 					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="phone" placeholder=""></div>			
 				</div>
-				<div class="form-group">
+				<div class="form-group date"  data-date-format="yyyy-mm-dd-mm">
 					<label for="ill_date" class="col-xs-4 control-label">受伤时间</label>
 					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="ill_date" placeholder=""></div>			
 				</div>
@@ -115,7 +116,7 @@
 			</form>			
 		</div>	  
 		<div style="margin-top: 30px;margin-bottom:10px;">
-			<button type="button" class="btn btn-default get_score" onclick="reg_doc_pat()">登&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp记</button>
+			<button  id="btn_reg_doc_pat" type="button" class="btn btn-default get_score" >登&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp记</button>
 			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 			<button type="button" class="btn btn-default button" onclick="skip_doc_pat()">跳&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp过</button>
 		</div>		  
@@ -251,5 +252,7 @@
     <script src="js/json.js"></script>  
     <script src="js/index.js"></script>
     <script src="js/post.js"></script>    
+    <script src="js/bootstrap-datepicker.min.js"></script>  
+    <script src="js/bootstrap-datepicker.zh-CN.min.js"></script>   
 	</body>
 </html>
