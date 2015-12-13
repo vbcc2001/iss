@@ -72,6 +72,8 @@ function score(){
 	}
 }
 $(function(){ 
+	//初始化弹出层
+	$('[data-toggle="popover"]').popover();
 	$(".radmenu").click(function(e){
 		var id = $(this).attr("id");
 		$(this).addClass("selected");

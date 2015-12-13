@@ -19,7 +19,6 @@ public abstract class BaseFunction implements Function {
 	
 	private Logger logger = Logger.getLogger(this.getClass());
 	ResponseParameter response = new ResponseParameter();
-
     /**
      * 获得新指定数据源连接对象
      */

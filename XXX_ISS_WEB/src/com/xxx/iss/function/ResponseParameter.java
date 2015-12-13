@@ -8,7 +8,7 @@ import java.util.Map;
 import com.xxx.iss.helper.PageHelper;
 import com.xxx.iss.jdbc.DataRow;
 /**
- * 返回参数的服务类 (错误编号和错误代码默认为"")
+ * 返回参数的服务类 (错误编号和错误代码默认为"0")
  * @author 门士松  20121031
  * @version 1.0
  * @since

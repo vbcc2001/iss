@@ -17,9 +17,9 @@
 		  <h5 style="margin-top: 180px;font-family:'simsun';">医生的助手，患者的窗口</h5>  
 		  <h6>In the service of doctors and patients</h6> 
 		  <div style="margin-top: 60px;">
-			<button type="button" class="btn btn-default" onclick="enter_doc()">医&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp生</button>
+			<button id="btn_enter_doc" type="button" class="btn btn-default" >医&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp生</button>
 			<span style="margin: 0 30px;"></span>
-			<button type="button" class="btn btn-primary" onclick="enter_pat()">患&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp者</button>
+			<button  id="btn_enter_pat" type="button" class="btn btn-primary" >患&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp者</button>
 		  </div>
 		  <div style="">
 			<button type="button" class="btn btn-link view" style="margin-left:-10px;"><img src="img/glass.png" style="height:30px;width:30px;"/>浏览12次</button>
@@ -62,9 +62,9 @@
 			</form>
 		</div>
 		<div style="margin-top: 30px;margin-bottom:10px;">
-			<button type="button" class="btn btn-default get_score" onclick="reg_doc()">下&nbsp&nbsp一&nbsp&nbsp步</button>
+			<button id="btn_reg_doc" type="button" class="btn btn-default get_score" >下&nbsp&nbsp一&nbsp&nbsp步</button>
 			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp			
-			<button type="button" class="btn btn-default button" onclick="skip_doc()">跳&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp过</button>
+			<button id="btn_skip_doc" type="button" class="btn btn-default button" onclick="skip_doc()">跳&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp过</button>
 		</div>	
 	  </div>
 	  <div  id="reg_doc_pat" style="display:none;text-align: center;margin-top: 10px;">
@@ -126,35 +126,35 @@
 			<form class="form-horizontal">
 				<div class="form-group">
 					<label for="name" class="col-xs-4 control-label">患者姓名</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="name" placeholder=""></div>			
+					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_name" placeholder=""></div>			
 				</div>
 				<div class="form-group">
 					<label for="sex" class="col-xs-4 control-label">性别</label>
 					<div class="col-xs-8" style="padding-left: 0px;">
-						<label class="radio-inline"><input type="radio" name="sex" id="sex_1" value="男"> 男性</label>
-						<label class="radio-inline"><input type="radio" name="sex" id="sex_2" value="女"> 女性</label>
+						<label class="radio-inline"><input type="radio" name="pat_sex" id="pat_sex_1" value="男"> 男性</label>
+						<label class="radio-inline"><input type="radio" name="pat_sex" id="pat_sex_2" value="女"> 女性</label>
 					</div>				
 				</div>
 				<div class="form-group">
 					<label for="age" class="col-xs-4 control-label">年龄</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="age" placeholder=""></div>			
+					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_age" placeholder=""></div>			
 				</div>		
 				<div class="form-group">
 					<label for="add" class="col-xs-4 control-label">住址</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="add" placeholder=""></div>			
+					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_add" placeholder=""></div>			
 				</div>
 				<div class="form-group">
 					<label for="phone" class="col-xs-4 control-label">联系电话</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="phone" placeholder=""></div>			
+					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_phone" placeholder=""></div>			
 				</div>
 				<div class="form-group">
 					<label for="ill_date" class="col-xs-4 control-label">受伤时间</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="ill_date" placeholder=""></div>			
+					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_ill_date" placeholder=""></div>			
 				</div>
 				<div class="form-group">
 					<label for="ill_type" class="col-xs-4 control-label">受伤类型</label>
 					<div class="col-xs-8" style="padding-left: 0px;">
-						<select class="form-control" id="ill_type">
+						<select class="form-control" id="pat_ill_type">
 						  <option>车祸</option>
 						  <option>坠落伤</option>
 						  <option>烧伤</option>
@@ -167,12 +167,12 @@
 				</div>		
 				<div class="form-group">
 					<label for="hospital" class="col-xs-4 control-label">治疗医院</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="hospital" placeholder=""></div>			
+					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_hospital" placeholder=""></div>			
 				</div>	
 			</form>			
 		</div>	  
 		<div style="margin-top: 30px;margin-bottom:10px;">
-			<button type="button" class="btn btn-default get_score" onclick="reg_pat()">下&nbsp&nbsp一&nbsp&nbsp步</button>
+			<button id="btn_reg_pat" type="button" class="btn btn-default get_score" >下&nbsp&nbsp一&nbsp&nbsp步</button>
 			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 			<button type="button" class="btn btn-default button" onclick="skip_pat()">跳&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp过</button>
 		</div>		  
@@ -230,11 +230,26 @@
 			<button type="button" class="btn btn-default get_score" onclick="bak_2()">完&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp成</button>
 			<button type="button" class="btn btn-default button" onclick="reset()">重新测试</button>
 		</div>  	   
-	  </div>	  
+	  </div>
     </div>
+    <div class="modal fade"  id="myModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">温馨提示</h4>
+	      </div>
+	      <div class="modal-body"><p></p></div>
+	      <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+    
+
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/json.js"></script>  
     <script src="js/index.js"></script>
+    <script src="js/post.js"></script>    
 	</body>
 </html>
