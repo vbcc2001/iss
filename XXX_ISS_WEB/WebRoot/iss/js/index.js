@@ -44,9 +44,11 @@ function reset(){
 	$(".radmenu").removeClass("selected");
 }
 $(function(){ 
-	//初始化弹出层
+	//初始日期框
 	$('#pat_ill_date').datepicker({ language: "zh-CN" });
 	$('#ill_date').datepicker({ language: "zh-CN" });	
+	//获取使用次数
+	
 	$(".radmenu").click(function(e){
 		var id = $(this).attr("id");
 		$(this).addClass("selected");

@@ -22,7 +22,7 @@
 			<span style="margin: 0 30px;"></span>
 			<button  id="btn_enter_pat" type="button" class="btn btn-primary" >患&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp者</button>
 		  </div>
-		  <div style="">
+		  <div style="display:none">
 			<button type="button" class="btn btn-link view" style="margin-left:-10px;"><img src="img/glass.png" style="height:30px;width:30px;"/>浏览12次</button>
 			<span style="margin: 0 30px;"></span>
 			<button type="button" class="btn btn-link view" style="margin-right:6px;"><img src="img/glass.png" style="height:30px;width:30px;"/>浏览12次</button>
@@ -32,7 +32,7 @@
 		<h3>ISS评分专业版</h3>
 		<div style="width:280px;text-align:left;margin:auto auto;padding-top:10px;">
 			<form class="form-horizontal">
-				<div class="form-group" >
+				<div class="form-group has-error" >
 					<label for="doc_name" class="col-xs-4 control-label">医生姓名</label>
 					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_name" placeholder=""></div>	
 				</div>
@@ -72,7 +72,7 @@
 		<h4>请登记患者信息</h4>
 		<div style="width:280px;text-align:left;margin:auto auto;padding-top:10px;">
 			<form class="form-horizontal">
-				<div class="form-group">
+				<div class="form-group has-error">
 					<label for="name" class="col-xs-4 control-label">患者姓名</label>
 					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="name" placeholder=""></div>			
 				</div>
@@ -97,7 +97,7 @@
 				</div>
 				<div class="form-group date"  data-date-format="yyyy-mm-dd-mm">
 					<label for="ill_date" class="col-xs-4 control-label">受伤时间</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="ill_date" placeholder=""></div>			
+					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="ill_date" placeholder="" readonly="readonly"></div>			
 				</div>
 				<div class="form-group">
 					<label for="ill_type" class="col-xs-4 control-label">受伤类型</label>
@@ -125,7 +125,7 @@
 		<h3>ISS评分大众版</h3>
 		<div style="width:280px;text-align:left;margin:auto auto;padding-top:10px;">
 			<form class="form-horizontal">
-				<div class="form-group">
+				<div class="form-group has-error">
 					<label for="name" class="col-xs-4 control-label">患者姓名</label>
 					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_name" placeholder=""></div>			
 				</div>
@@ -150,7 +150,7 @@
 				</div>
 				<div class="form-group">
 					<label for="ill_date" class="col-xs-4 control-label">受伤时间</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_ill_date" placeholder=""></div>			
+					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_ill_date" placeholder="" readonly="readonly" ></div>			
 				</div>
 				<div class="form-group">
 					<label for="ill_type" class="col-xs-4 control-label">受伤类型</label>
