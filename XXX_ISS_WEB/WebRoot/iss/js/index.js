@@ -44,6 +44,16 @@ function reset(){
 	$(".radmenu").removeClass("selected");
 }
 $(function(){ 
+	//获得医生使用次数
+	var content ={"head":{"userID":"","sessionID":"","funcNO":"000005"},"content":{"click_content":"医生使用"}} ;
+	$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },function(result){
+		if(result.head.errorNo==""){  $("#click_count_doc").html('<img src="img/glass.png" style="height:30px;width:30px;"/>浏览'+result.list[0].click_count+'次'); }
+	}, "json");
+	//获得患者使用次数
+	content ={"head":{"userID":"","sessionID":"","funcNO":"000005"},"content":{"click_content":"患者使用"}} ;
+	$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },function(result){
+		if(result.head.errorNo==""){  $("#click_count_pat").html('<img src="img/glass.png" style="height:30px;width:30px;"/>浏览'+result.list[0].click_count+'次'); }
+	}, "json");	
 	//初始日期框
 	$('#pat_ill_date').datepicker({ language: "zh-CN" });
 	$('#ill_date').datepicker({ language: "zh-CN" });	
