@@ -8,7 +8,7 @@ $("#btn_enter_doc").click(function(e){
 		$("#index").hide();
 		$("#reg_doc_pat").show();
 	}
-	var content ={"head":{"userID":"","sessionID":"","funcNO":"000004"},"content":{"click_content":"医生使用"}} ;
+	var content ={"head":{"userID":"","sessionID":"","funcNO":"000006"},"content":{"click_content":"医生使用"}} ;
 	$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },function(result){}, "json");
 });
 $("#btn_enter_pat").click(function(e){
@@ -21,7 +21,7 @@ $("#btn_enter_pat").click(function(e){
 		$("#index").hide();
 		$("#main").show();
 	}
-	var content ={"head":{"userID":"","sessionID":"","funcNO":"000004"},"content":{"click_content":"患者使用"}} ;
+	var content ={"head":{"userID":"","sessionID":"","funcNO":"000006"},"content":{"click_content":"患者使用"}} ;
 	$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },function(result){}, "json");
 });
 $("#btn_reg_doc").click(function(e){
@@ -63,7 +63,7 @@ $("#btn_reg_doc").click(function(e){
 	content.content["doc_phone"] = $("#doc_phone").val();
 	content.content["doc_email"] = $("#doc_email").val();
 	content.content["doc_tel"] = $("#doc_tel").val();	
-	content.content["weixin_open_id"] = $("#weixin_open_id").val();
+	content.content["weixin_open_id"] = getQueryString("openid");
 	var $btn = $(this).button('处理中');
 	$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },
 	   function(result){
@@ -122,7 +122,7 @@ $("#btn_reg_pat").click(function(e){
 	content.content["pat_ill_date"] = $("#pat_ill_date").val();
 	content.content["pat_ill_type"] = $("#pat_ill_type").val();
 	content.content["pat_hospital"] = $("#pat_hospital").val();
-	content.content["weixin_open_id"] = $("#weixin_open_id").val();
+	content.content["weixin_open_id"] = getQueryString("openid");
 	var $btn = $(this).button('处理中');
 	$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },
 	   function(result){

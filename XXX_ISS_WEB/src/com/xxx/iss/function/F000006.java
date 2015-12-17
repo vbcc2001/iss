@@ -18,6 +18,8 @@ public class F000006 extends BaseFunction   {
 		F000006 f = new F000006();
 		RequestParameter req = new RequestParameter();
 		req.addParameter("click_content", "患者使用");
-		f.execute(req);
+		for(int i=0;i<20;i++){
+			f.execute(req);
+		}
 	}
 }

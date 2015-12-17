@@ -20,11 +20,11 @@ import java.util.List;
  */
 public class BaseAction implements Action {
 
-	private Logger logger = Logger.getLogger(this.getClass());
-    private List<String> actionErrors = new ArrayList<String>();
-    private List<String> actionMessages = new ArrayList<String>();
-    private HttpServletRequest request = null;
-    private HttpServletResponse response = null;
+	protected Logger logger = Logger.getLogger(this.getClass());
+	protected List<String> actionErrors = new ArrayList<String>();
+	protected List<String> actionMessages = new ArrayList<String>();
+	protected HttpServletRequest request = null;
+	protected HttpServletResponse response = null;
     /**
      * 实现Action中的execute方法
      * @param request

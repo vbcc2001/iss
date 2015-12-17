@@ -26,7 +26,7 @@ public class F000002 extends BaseFunction   {
 		}else{
 			//生成一个sessionID
 			String sessionID =StringHelper.getMD5(pat_name+String.valueOf(new Date().getTime()));
-			requestParameter.getParams().put("weixin_open_id", sessionID);
+			requestParameter.getParams().put("user_code", sessionID);
 			if(this.insert(requestParameter.getParams())>0 && this.insert2(requestParameter.getParams())>0){
 					List<DataRow> list = new ArrayList<DataRow>();
 					DataRow dataRow = new DataRow();
@@ -46,7 +46,7 @@ public class F000002 extends BaseFunction   {
 		arg[1]=para.get("pat_sex");
 		arg[2]=Integer.parseInt(para.get("pat_age"));
 		arg[3]=para.get("pat_phone");
-		arg[4]=para.get("weixin_open_id");
+		arg[4]=para.get("user_code");
 		arg[5]=para.get("weixin_open_id");
 		String sql="INSERT INTO t_user_info(name,sex,age,phone,user_type,user_code,weixin_open_id,weixin_id) VALUES (?,?,?,?,'patient',?,?,'test')";
 		return getNewJdbcTemplate().update(sql,arg);

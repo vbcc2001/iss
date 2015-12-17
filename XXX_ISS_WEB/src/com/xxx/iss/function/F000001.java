@@ -22,7 +22,7 @@ public class F000001 extends BaseFunction   {
 		}else{
 			//生成一个sessionID
 			String sessionID =StringHelper.getMD5(doc_name+String.valueOf(new Date().getTime()));
-			requestParameter.getParams().put("weixin_open_id", sessionID);
+			requestParameter.getParams().put("user_code", sessionID);
 			if(this.insertDoctor(requestParameter.getParams())>0){
 				List<DataRow> list = new ArrayList<DataRow>();
 				DataRow dataRow = new DataRow();
@@ -45,7 +45,7 @@ public class F000001 extends BaseFunction   {
 		arg[4]=para.get("doc_tel");
 		arg[5]=para.get("doc_email");
 		arg[6]=para.get("doc_phone");
-		arg[7]=para.get("weixin_open_id");
+		arg[7]=para.get("user_code");
 		arg[8]=para.get("weixin_open_id");
 		String sql="INSERT INTO t_user_info(name,com,dept,post,tel,email,phone,user_type,user_code,weixin_open_id,weixin_id) VALUES (?,?,?,?,?,?,?,'doctor',?,?,'test')";
 		return getNewJdbcTemplate().update(sql,arg);

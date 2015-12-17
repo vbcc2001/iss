@@ -43,6 +43,11 @@ function reset(){
 	$("#main").show();
 	$(".radmenu").removeClass("selected");
 }
+function getQueryString(name){
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
+}
 $(function(){ 
 	//获得医生使用次数
 	var content ={"head":{"userID":"","sessionID":"","funcNO":"000005"},"content":{"click_content":"医生使用"}} ;
@@ -57,8 +62,7 @@ $(function(){
 	//初始日期框
 	$('#pat_ill_date').datepicker({ language: "zh-CN" });
 	$('#ill_date').datepicker({ language: "zh-CN" });	
-	//获取使用次数
-	
+	//点击事件
 	$(".radmenu").click(function(e){
 		var id = $(this).attr("id");
 		$(this).addClass("selected");
