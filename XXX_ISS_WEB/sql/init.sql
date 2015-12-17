@@ -17,3 +17,10 @@ CREATE TABLE t_user_info (
   create_time  timestamp NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (id)
 )
+DROP TABLE IF EXISTS t_click_count;
+CREATE TABLE t_click_count (
+  click_count int(10) NOT NULL AUTO_INCREMENT COMMENT '点击次数',
+  click_content varchar(100) DEFAULT NULL COMMENT '点击内容',
+  create_time  timestamp NULL DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (click_count)
+)

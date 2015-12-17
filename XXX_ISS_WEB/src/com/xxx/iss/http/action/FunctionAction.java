@@ -158,7 +158,7 @@ public class FunctionAction extends BaseAction {
      * @throws SQLException 
      */
     public boolean isLogin(RequestParameter requestParameter) throws SQLException  {	
-    	String functions =  "000001,000002"; //不需要登陆的功能号
+    	String functions =  "000001,000002,000003,000004,000005"; //不需要登陆的功能号
     	boolean flag = false;
     	//不需要登录判断
     	if(functions!=null && functions.indexOf(requestParameter.getFuncNo())>=0 ){

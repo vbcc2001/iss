@@ -7,6 +7,8 @@ $("#btn_enter_doc").click(function(e){
 		$("#index").hide();
 		$("#reg_doc_pat").show();
 	}
+	var content ={"head":{"userID":"","sessionID":"","funcNO":"000004"},"content":{"click_content":"医生使用"}} ;
+	$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },function(result){}, "json");
 });
 $("#btn_enter_pat").click(function(e){
 	var pat_id = localStorage.getItem("pat_id");
@@ -17,6 +19,8 @@ $("#btn_enter_pat").click(function(e){
 		$("#index").hide();
 		$("#main").show();
 	}
+	var content ={"head":{"userID":"","sessionID":"","funcNO":"000004"},"content":{"click_content":"患者使用"}} ;
+	$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },function(result){}, "json");
 });
 $("#btn_reg_doc").click(function(e){
 	if($("#doc_name").val()=="") { 
