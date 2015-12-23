@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <title>xls合并</title>
+  <link rel="stylesheet" href="/iss/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/iss/css/bootstrap-datepicker.min.css"> 
+</head>
+<body>
+    <br>
+	<input id="file_1" type="file" style="display:none" name="file_1">  
+	<input id="file_2" type="file" style="display:none" name="file_2">  
+	<div class="input-append">  
+	    上传第一个文件:<input id="photoCover" class="input-large" type="text" style="height:30px;"><a class="btn" onclick="$('#file_1').click();">Browse</a>  
+        <br>
+        上传第二个文件:<input id="photoCover" class="input-large" type="text" style="height:30px;"><a class="btn" onclick="$('file_2').click();">Browse</a> 	
+	</div> 
+	<a class="btn" onclick="$('input[id=lefile]').click();">合并后下载</a> 
+	<script src="/iss/js/jquery-1.11.3.min.js"></script>
+	<script src="/iss/js/bootstrap.min.js"></script>   
+	<script type="text/javascript">  
+		$('input[id=lefile]').change(function() {  
+			   $('#photoCover').val($(this).val());  
+		});  
+	</script>  
+</body>
+</html>
