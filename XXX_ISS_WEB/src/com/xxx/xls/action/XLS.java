@@ -21,8 +21,10 @@ public class XLS extends BaseAction {
 		response.setContentType("application/csv; charset=GBK");
 		response.setHeader("Content-disposition","filename=\"3.csv\"");
 		/* 读取一个文件 */
-		HashMap<String,HashMap<String,String>> f1 = get("D:/iss/XXX_ISS_WEB/WebRoot/xls/csv/1.csv");
-		HashMap<String,HashMap<String,String>> f2 = get("D:/iss/XXX_ISS_WEB/WebRoot/xls/csv/2.csv");
+		//HashMap<String,HashMap<String,String>> f1 = get("D:/iss/XXX_ISS_WEB/WebRoot/xls/csv/1.csv");
+		//HashMap<String,HashMap<String,String>> f2 = get("D:/iss/XXX_ISS_WEB/WebRoot/xls/csv/2.csv");
+		HashMap<String,HashMap<String,String>> f1 = get("C:/XXX_ISS_DEV/XXX_ISS_WEB/WebRoot/xls/csv/1.csv");
+		HashMap<String,HashMap<String,String>> f2 = get("C:/XXX_ISS_DEV/XXX_ISS_WEB/WebRoot/xls/csv/2.csv");
 		//将f2合并到f1
 		for(String key :f1.keySet()){
 			for( String key2 :   f2.get(key).keySet()){
