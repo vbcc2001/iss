@@ -8,23 +8,85 @@
   <title>xls合并</title>
   <link rel="stylesheet" href="/iss/css/bootstrap.min.css">
   <link rel="stylesheet" href="/iss/css/bootstrap-datepicker.min.css"> 
+  <link rel="stylesheet" href="/iss/css/jquery.fileupload.css">
 </head>
 <body>
     <br>
-	<input id="file_1" type="file" style="display:none" name="file_1">  
-	<input id="file_2" type="file" style="display:none" name="file_2">  
-	<div class="input-append">  
-	    上传第一个文件:<input id="photoCover" class="input-large" type="text" style="height:30px;"><a class="btn" onclick="$('#file_1').click();">Browse</a>  
-        <br>
-        上传第二个文件:<input id="photoCover" class="input-large" type="text" style="height:30px;"><a class="btn" onclick="$('file_2').click();">Browse</a> 	
-	</div> 
-	<a class="btn" onclick="$('input[id=lefile]').click();">合并后下载</a> 
+    <!-- The fileinput-button span is used to style the file input field as button -->
+    <span class="btn btn-success fileinput-button">
+        <i class="glyphicon glyphicon-plus"></i>
+        <span>上传第一个文件...</span>
+        <!-- The file input field used as target for the file upload widget -->
+        <input id="fileupload" type="file" name="files[]" multiple>
+    </span>
+    <br>
+    <br>
+    <!-- The global progress bar -->
+    <div id="progress" class="progress">
+        <div class="progress-bar progress-bar-success"></div>
+    </div>
+    <!-- The container for the uploaded files -->
+    <div id="files" class="files"></div>
+    <br>
+    <!-- The fileinput-button span is used to style the file input field as button -->
+    <span class="btn btn-success fileinput-button">
+        <i class="glyphicon glyphicon-plus"></i>
+        <span>上传第二个文件...</span>
+        <!-- The file input field used as target for the file upload widget -->
+        <input id="fileupload1" type="file" name="files[]" multiple>
+    </span>
+    <br>
+    <br>
+    <!-- The global progress bar -->
+    <div id="progress1" class="progress">
+        <div class="progress-bar progress-bar-success"></div>
+    </div>
+    <!-- The container for the uploaded files -->
+    <div id="files1" class="files"></div>
+    <br>
+    <!-- The fileinput-button span is used to style the file input field as button -->
+    <span id="main" class="btn btn-success"><span>合并后下载</span></span>    
+
 	<script src="/iss/js/jquery-1.11.3.min.js"></script>
-	<script src="/iss/js/bootstrap.min.js"></script>   
+	<script src="/iss/js/bootstrap.min.js"></script> 
+	<script src="/iss/js/jquery.ui.widget.js"></script>
+	<!-- The basic File Upload plugin -->
+	<script src="/iss/js/jquery.fileupload.js"></script>  
 	<script type="text/javascript">  
-		$('input[id=lefile]').change(function() {  
-			   $('#photoCover').val($(this).val());  
-		});  
-	</script>  
+		$('#main').click(function() {  
+			window.location.href="/action/xls/action/XLS"
+		}); 
+		$('#fileupload').fileupload({
+	        url: "/action/xls/action/Upload",
+	        dataType: 'json',
+	        done: function (e, data) {
+	               $('<p/>').text(data.result.name).appendTo('#files');
+	        },
+	        progressall: function (e, data) {
+	            var progress = parseInt(data.loaded / data.total * 100, 10);
+	            $('#progress .progress-bar').css(
+	                'width',
+	                progress + '%'
+	            );
+	        }
+		}).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+		
+		$('#fileupload1').fileupload({
+	        url: "/action/xls/action/Upload1",
+	        dataType: 'json',
+	        done: function (e, data) {
+	               $('<p/>').text(data.result.name).appendTo('#files1');
+	        },
+	        progressall: function (e, data) {
+	            var progress = parseInt(data.loaded / data.total * 100, 10);
+	            $('#progress1 .progress-bar').css(
+	                'width',
+	                progress + '%'
+	            );
+	        }
+		}).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+	</script> 
 </body>
 </html>
