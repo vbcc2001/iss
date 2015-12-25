@@ -58,8 +58,8 @@ public class F000002 extends BaseFunction   {
 		arg[2]=Integer.parseInt(para.get("pat_age"));
 		arg[3]=para.get("pat_add");
 		arg[4]=para.get("pat_phone");
-		arg[5]=para.get("weixin_open_id");
-		arg[6]=para.get("weixin_open_id");
+		arg[5]=para.get("user_code");
+		arg[6]=para.get("user_code");
 		arg[7]=para.get("pat_ill_date");
 		arg[8]=para.get("pat_ill_type");
 		arg[9]=para.get("pat_hospital");
