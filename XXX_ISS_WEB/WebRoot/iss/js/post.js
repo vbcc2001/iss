@@ -30,6 +30,16 @@ $("#btn_reg_doc").click(function(e){
 		$('#myModal').modal('show');
 		return;
 	}
+	if($("#doc_hospital").val()=="") { 
+		$('.modal-body').html("请填写医院！");
+		$('#myModal').modal('show');
+		return;
+	}
+	if($("#doc_phone").val()=="") { 
+		$('.modal-body').html("电话不能为空！");
+		$('#myModal').modal('show');
+		return;
+	}
 	if($("#doc_phone").val()!=""){
 		if(isNaN($("#doc_phone").val())) { 
 			$('.modal-body').html("手机格式错误");
@@ -46,7 +56,12 @@ $("#btn_reg_doc").click(function(e){
 			$('#myModal').modal('show');
 			return;
 		}
-	}	
+	}
+	if($("#doc_email").val()=="") { 
+		$('.modal-body').html("邮箱不能为空！");
+		$('#myModal').modal('show');
+		return;
+	}
 	if($("#doc_email").val()!=""){
 		var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
 		if(!reg.test($("#doc_email").val())){
@@ -84,6 +99,16 @@ $("#btn_reg_pat").click(function(e){
 		$('#myModal').modal('show');
 		return;
 	}
+	if($('input[name="pat_sex"]:checked').val()==undefined) { 
+		$('.modal-body').html("性别不能为空！");
+		$('#myModal').modal('show');
+		return;
+	}
+	if($("#pat_age").val()=="") { 
+		$('.modal-body').html("年龄不能为空！");
+		$('#myModal').modal('show');
+		return;
+	}	
 	if($("#pat_age").val()!=""){	
 		if(isNaN($("#pat_age").val())) { 
 			$('.modal-body').html("年龄格式错误");
@@ -113,6 +138,16 @@ $("#btn_reg_pat").click(function(e){
 			return;
 		}
 	}
+	if($("#pat_ill_date").val()=="") { 
+		$('.modal-body').html("受伤时间不能为空！");
+		$('#myModal').modal('show');
+		return;
+	}
+	if($("#pat_ill_type").val()=="") { 
+		$('.modal-body').html("受伤类型不能为空！");
+		$('#myModal').modal('show');
+		return;
+	}
 	var content ={"head":{"userID":"","sessionID":"","funcNO":"000002"},"content":{"name":"880000000"}} ;
 	content.content["pat_name"] = $("#pat_name").val();
 	content.content["pat_sex"] = $('input[name="pat_sex"]:checked ').val();
@@ -140,6 +175,16 @@ $("#btn_reg_pat").click(function(e){
 $("#btn_reg_doc_pat").click(function(e){
 	if($("#name").val()=="") { 
 		$('.modal-body').html("姓名不能为空！");
+		$('#myModal').modal('show');
+		return;
+	}
+	if($('input[name="sex"]:checked').val()==undefined) { 
+		$('.modal-body').html("性别不能为空！");
+		$('#myModal').modal('show');
+		return;
+	}
+	if($("#age").val()=="") { 
+		$('.modal-body').html("年龄不能为空！");
 		$('#myModal').modal('show');
 		return;
 	}
@@ -172,6 +217,16 @@ $("#btn_reg_doc_pat").click(function(e){
 			return;
 		}
 	}	
+	if($("#ill_date").val()=="") { 
+		$('.modal-body').html("受伤时间不能为空！");
+		$('#myModal').modal('show');
+		return;
+	}
+	if($("#ill_type").val()=="") { 
+		$('.modal-body').html("受伤类型不能为空！");
+		$('#myModal').modal('show');
+		return;
+	}
 	var content ={"head":{"userID":"","sessionID":"","funcNO":"000003"},"content":{"name":"880000000"}} ;
 	content.content["doc_id"] = localStorage.getItem("doc_id");
 	content.content["pat_name"] = $("#name").val();

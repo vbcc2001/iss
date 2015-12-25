@@ -35,11 +35,11 @@
 		<div style="width:280px;text-align:left;margin:auto auto;padding-top:10px;">
 			<form class="form-horizontal">
 				<div class="form-group has-error" >
-					<label for="doc_name" class="col-xs-4 control-label">医生姓名</label>
+					<label for="doc_name" class="col-xs-4 control-label">*医生姓名</label>
 					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_name" placeholder=""></div>	
 				</div>
-				<div class="form-group">
-					<label for="doc_hospital" class="col-xs-4 control-label">医院</label>
+				<div class="form-group has-error">
+					<label for="doc_hospital" class="col-xs-4 control-label">*医院</label>
 					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_hospital" placeholder=""></div>			
 				</div>
 				<div class="form-group">
@@ -50,12 +50,12 @@
 					<label for="doc_job" class="col-xs-4 control-label">职称</label>
 					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_job" placeholder=""></div>			
 				</div>
-				<div class="form-group">
-					<label for="doc_phone" class="col-xs-4 control-label">联系电话</label>
+				<div class="form-group has-error">
+					<label for="doc_phone" class="col-xs-4 control-label">*联系电话</label>
 					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_phone" placeholder=""></div>			
 				</div>
-				<div class="form-group">
-					<label for="doc_email" class="col-xs-4 control-label">电子邮箱</label>
+				<div class="form-group has-error">
+					<label for="doc_email" class="col-xs-4 control-label">*电子邮箱</label>
 					<div class="col-xs-8" style="padding-left: 0px;"><input type="email" class="form-control" id="doc_email" placeholder=""></div>			
 				</div>
 				<div class="form-group">
@@ -65,9 +65,9 @@
 			</form>
 		</div>
 		<div style="margin-top: 30px;margin-bottom:10px;">
-			<button id="btn_reg_doc" type="button" class="btn btn-default get_score" >下&nbsp&nbsp一&nbsp&nbsp步</button>
-			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp			
-			<button id="btn_skip_doc" type="button" class="btn btn-default button" onclick="skip_doc()">跳&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp过</button>
+			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<button id="btn_reg_doc" type="button" class="btn btn-default get_score" >下&nbsp&nbsp一&nbsp&nbsp步</button>		
+			<button style="display:none;" id="btn_skip_doc" type="button" class="btn btn-default button" onclick="skip_doc()">跳&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp过</button>
 		</div>	
 	  </div>
 	  <div  id="reg_doc_pat" style="display:none;text-align: center;margin-top: 10px;">
@@ -75,18 +75,18 @@
 		<div style="width:280px;text-align:left;margin:auto auto;padding-top:10px;">
 			<form class="form-horizontal">
 				<div class="form-group has-error">
-					<label for="name" class="col-xs-4 control-label">患者姓名</label>
+					<label for="name" class="col-xs-4 control-label">*患者姓名</label>
 					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="name" placeholder=""></div>			
 				</div>
-				<div class="form-group">
-					<label for="sex" class="col-xs-4 control-label">性别</label>
+				<div class="form-group has-error">
+					<label for="sex" class="col-xs-4 control-label">*性别</label>
 					<div class="col-xs-8" style="padding-left: 0px;">
 						<label class="radio-inline"><input type="radio" name="sex" id="sex_1" value="男"> 男性</label>
 						<label class="radio-inline"><input type="radio" name="sex" id="sex_2" value="女"> 女性</label>
 					</div>				
 				</div>
-				<div class="form-group">
-					<label for="age" class="col-xs-4 control-label">年龄</label>
+				<div class="form-group has-error">
+					<label for="age" class="col-xs-4 control-label">*年龄</label>
 					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="age" placeholder=""></div>			
 				</div>		
 				<div class="form-group">
@@ -97,14 +97,15 @@
 					<label for="phone" class="col-xs-4 control-label">联系电话</label>
 					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="phone" placeholder=""></div>			
 				</div>
-				<div class="form-group date"  data-date-format="yyyy-mm-dd-mm">
-					<label for="ill_date" class="col-xs-4 control-label">受伤时间</label>
+				<div class="form-group date has-error"  data-date-format="yyyy-mm-dd-mm">
+					<label for="ill_date" class="col-xs-4 control-label">*受伤时间</label>
 					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="ill_date" placeholder="" readonly="readonly"></div>			
 				</div>
-				<div class="form-group">
-					<label for="ill_type" class="col-xs-4 control-label">受伤类型</label>
+				<div class="form-group has-error">
+					<label for="ill_type" class="col-xs-4 control-label">*受伤类型</label>
 					<div class="col-xs-8" style="padding-left: 0px;">
 						<select class="form-control" id="ill_type">
+						  <option></option>
 						  <option>车祸</option>
 						  <option>坠落伤</option>
 						  <option>烧伤</option>
@@ -118,9 +119,9 @@
 			</form>			
 		</div>	  
 		<div style="margin-top: 30px;margin-bottom:10px;">
-			<button  id="btn_reg_doc_pat" type="button" class="btn btn-default get_score" >登&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp记</button>
 			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-			<button type="button" class="btn btn-default button" onclick="skip_doc_pat()">跳&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp过</button>
+			<button  id="btn_reg_doc_pat" type="button" class="btn btn-default get_score" >登&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp记</button>
+			<button style="display:none;" type="button" class="btn btn-default button" onclick="skip_doc_pat()">跳&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp过</button>
 		</div>		  
 	  </div>	  
 	  <div  id="reg_pat" style="display:none;text-align: center;margin-top: 10px;">
@@ -128,18 +129,18 @@
 		<div style="width:280px;text-align:left;margin:auto auto;padding-top:10px;">
 			<form class="form-horizontal">
 				<div class="form-group has-error">
-					<label for="name" class="col-xs-4 control-label">患者姓名</label>
+					<label for="name" class="col-xs-4 control-label">*患者姓名</label>
 					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_name" placeholder=""></div>			
 				</div>
-				<div class="form-group">
-					<label for="sex" class="col-xs-4 control-label">性别</label>
+				<div class="form-group has-error">
+					<label for="sex" class="col-xs-4 control-label">*性别</label>
 					<div class="col-xs-8" style="padding-left: 0px;">
 						<label class="radio-inline"><input type="radio" name="pat_sex" id="pat_sex_1" value="男"> 男性</label>
 						<label class="radio-inline"><input type="radio" name="pat_sex" id="pat_sex_2" value="女"> 女性</label>
 					</div>				
 				</div>
-				<div class="form-group">
-					<label for="age" class="col-xs-4 control-label">年龄</label>
+				<div class="form-group has-error">
+					<label for="age" class="col-xs-4 control-label">*年龄</label>
 					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_age" placeholder=""></div>			
 				</div>		
 				<div class="form-group">
@@ -150,14 +151,15 @@
 					<label for="phone" class="col-xs-4 control-label">联系电话</label>
 					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_phone" placeholder=""></div>			
 				</div>
-				<div class="form-group">
-					<label for="ill_date" class="col-xs-4 control-label">受伤时间</label>
+				<div class="form-group has-error">
+					<label for="ill_date" class="col-xs-4 control-label">*受伤时间</label>
 					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_ill_date" placeholder="" readonly="readonly" ></div>			
 				</div>
-				<div class="form-group">
-					<label for="ill_type" class="col-xs-4 control-label">受伤类型</label>
+				<div class="form-group has-error">
+					<label for="ill_type" class="col-xs-4 control-label">*受伤类型</label>
 					<div class="col-xs-8" style="padding-left: 0px;">
 						<select class="form-control" id="pat_ill_type">
+						  <option></option>						
 						  <option>车祸</option>
 						  <option>坠落伤</option>
 						  <option>烧伤</option>
@@ -175,9 +177,9 @@
 			</form>			
 		</div>	  
 		<div style="margin-top: 30px;margin-bottom:10px;">
-			<button id="btn_reg_pat" type="button" class="btn btn-default get_score" >下&nbsp&nbsp一&nbsp&nbsp步</button>
 			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-			<button type="button" class="btn btn-default button" onclick="skip_pat()">跳&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp过</button>
+			<button id="btn_reg_pat" type="button" class="btn btn-default get_score" >下&nbsp&nbsp一&nbsp&nbsp步</button>
+			<button style="display:none;" type="button" class="btn btn-default button" onclick="skip_pat()">跳&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp过</button>
 		</div>		  
 	  </div>	  	  
 	  <div  id="main" style="display:none;text-align: center;">
