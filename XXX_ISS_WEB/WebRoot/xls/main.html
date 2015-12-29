@@ -44,6 +44,18 @@
     <!-- The container for the uploaded files -->
     <div id="files1" class="files"></div>
     <br>
+    <div class="row">
+      <div class="col-md-6">    
+           <label>
+                <input type="checkbox" ><span id="file_name"></span>
+           </label>
+      </div>
+      <div class="col-md-6">
+           <label>
+                <input type="checkbox" ><span id="file1_name"></span>
+           </label>
+      </div>        
+    </div>
     <!-- The fileinput-button span is used to style the file input field as button -->
     <span id="main" class="btn btn-success"><span>合并后下载</span></span>    
 
@@ -60,7 +72,16 @@
 	        url: "/action/xls/action/Upload",
 	        dataType: 'json',
 	        done: function (e, data) {
-	               $('<p/>').text(data.result.name).appendTo('#files');
+                $('#file_name').text(data.result.name);
+                alert(data.result.titles.length);
+                for(var i =0 ; i<data.result.titles.length ; i++){	
+            	   var s1 = '<div class="col-md-6"><label><input type="checkbox" ><span id="file_name"></span></label></div>';
+                   var s2 = '<div class="col-md-6"><label><input type="checkbox" ><span id="file1_name"></span></label></div>';     
+                   var s   = '<div class="row">'+s1+s2+'</div>';
+                   
+                    
+                	
+                }
 	        },
 	        progressall: function (e, data) {
 	            var progress = parseInt(data.loaded / data.total * 100, 10);
@@ -76,7 +97,7 @@
 	        url: "/action/xls/action/Upload1",
 	        dataType: 'json',
 	        done: function (e, data) {
-	               $('<p/>').text(data.result.name).appendTo('#files1');
+                $('#file1_name').text(data.result.name);
 	        },
 	        progressall: function (e, data) {
 	            var progress = parseInt(data.loaded / data.total * 100, 10);
