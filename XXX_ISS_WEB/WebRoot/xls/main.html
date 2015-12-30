@@ -28,6 +28,7 @@
     <!-- The container for the uploaded files -->
     <div id="files" class="files"></div>
     <br>
+   <div class="row"  id ="titles"><div class="col-md-12"><label><input type="checkbox" ><span id="file_name"></span></label></div></div>
     <!-- The fileinput-button span is used to style the file input field as button -->
     <span class="btn btn-success fileinput-button">
         <i class="glyphicon glyphicon-plus"></i>
@@ -44,18 +45,8 @@
     <!-- The container for the uploaded files -->
     <div id="files1" class="files"></div>
     <br>
-    <div class="row">
-      <div class="col-md-6">    
-           <label>
-                <input type="checkbox" ><span id="file_name"></span>
-           </label>
-      </div>
-      <div class="col-md-6">
-           <label>
-                <input type="checkbox" ><span id="file1_name"></span>
-           </label>
-      </div>        
-    </div>
+   <div class="row"  id ="titles1"><div class="col-md-12"><label><input type="checkbox" ><span id="file1_name"></span></label></div></div>
+   
     <!-- The fileinput-button span is used to style the file input field as button -->
     <span id="main" class="btn btn-success"><span>合并后下载</span></span>    
 
@@ -73,14 +64,9 @@
 	        dataType: 'json',
 	        done: function (e, data) {
                 $('#file_name').text(data.result.name);
-                alert(data.result.titles.length);
                 for(var i =0 ; i<data.result.titles.length ; i++){	
-            	   var s1 = '<div class="col-md-6"><label><input type="checkbox" ><span id="file_name"></span></label></div>';
-                   var s2 = '<div class="col-md-6"><label><input type="checkbox" ><span id="file1_name"></span></label></div>';     
-                   var s   = '<div class="row">'+s1+s2+'</div>';
-                   
-                    
-                	
+            	   var s = '<div class="col-md-2"><label><input  name="title"   type="checkbox" ><span id="title_'+i+'">'+data.result.titles[i]+'</span></label></div>';
+                   $(s).appendTo('#titles');
                 }
 	        },
 	        progressall: function (e, data) {
@@ -98,6 +84,10 @@
 	        dataType: 'json',
 	        done: function (e, data) {
                 $('#file1_name').text(data.result.name);
+                for(var i =0 ; i<data.result.titles.length ; i++){  
+                   var s = '<div class="col-md-2"><label><input  name="title1"   type="checkbox" ><span id="title1_'+i+'">'+data.result.titles[i]+'</span></label></div>';
+                   $(s).appendTo('#titles1');
+                }
 	        },
 	        progressall: function (e, data) {
 	            var progress = parseInt(data.loaded / data.total * 100, 10);
