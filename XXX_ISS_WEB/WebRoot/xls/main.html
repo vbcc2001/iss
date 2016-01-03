@@ -48,68 +48,23 @@
    <div class="row"  id ="titles1"><div class="col-md-12"><label><span id="file1_name"></span></label></div></div>
    
     <!-- The fileinput-button span is used to style the file input field as button -->
-    <span id="main" class="btn btn-success"><span>合并后下载</span></span>    
-
+    <span id="main" class="btn btn-success"><span>合并后下载</span></span> 
+    <br> 
+    <br>  
+	<p class="bg-danger">
+		注意事项:<br>
+		<span style="margin-left: 30px">1.上传的文件不要有合并的行和列。</span><br>
+		<span style="margin-left: 30px">2.上次的文件必须要有"编号"列作为两个文件合并用关联列。</span><br>
+		<span style="margin-left: 30px">3.标题行只能有一行，且不能有半角逗号、半角引号、回车。</span><br>
+		<span style="margin-left: 30px">4.对身份证特殊处理：如果有身份证，标题必须用"身份证号"，并将合并的文件替换"@#@"</span><br>
+		<span style="margin-left: 30px">5.内容行不能有半角逗号、半角引号，但可以有回车。</span><br>
+		<span style="margin-left: 30px">6.考虑数据安全，上传空文件进行替换</span><br>				
+	</p>
 	<script src="/iss/js/jquery-1.11.3.min.js"></script>
 	<script src="/iss/js/bootstrap.min.js"></script> 
 	<script src="/iss/js/jquery.ui.widget.js"></script>
 	<!-- The basic File Upload plugin -->
 	<script src="/iss/js/jquery.fileupload.js"></script>  
-	<script type="text/javascript">  
-		$('#main').click(function() {  
-		 var title=""
-         $("input[name=title]").each(function() {  
-                if ($(this).prop('checked')) {  
-                	title +=$(this).val()+",";  
-                }  
-         });  
-			var title1=""
-	         $("input[name=title1]").each(function() {  
-	                if ($(this).attr("checked")) {  
-	                	title1 += $(this).val()+",";   
-	                }  
-	            });  
-			window.location.href="/action/xls/action/XLS?title="+title+"&title1="+title1;
-		}); 
-		$('#fileupload').fileupload({
-	        url: "/action/xls/action/Upload",
-	        dataType: 'json',
-	        done: function (e, data) {
-                $('#file_name').text(data.result.name);
-                for(var i =0 ; i<data.result.titles.length ; i++){	
-            	   var s = '<div class="col-md-2"><label><input  name="title"  id="title_'+i+'" type="checkbox" value="'+i+'"><span>'+data.result.titles[i]+'</span></label></div>';
-                   $(s).appendTo('#titles');
-                }
-	        },
-	        progressall: function (e, data) {
-	            var progress = parseInt(data.loaded / data.total * 100, 10);
-	            $('#progress .progress-bar').css(
-	                'width',
-	                progress + '%'
-	            );
-	        }
-		}).prop('disabled', !$.support.fileInput)
-        .parent().addClass($.support.fileInput ? undefined : 'disabled');
-		
-		$('#fileupload1').fileupload({
-	        url: "/action/xls/action/Upload1",
-	        dataType: 'json',
-	        done: function (e, data) {
-                $('#file1_name').text(data.result.name);
-                for(var i =0 ; i<data.result.titles.length ; i++){  
-                   var s = '<div class="col-md-2"><label><input  name="title1"  id="title1_'+i+'" type="checkbox" value="'+i+'"><span>'+data.result.titles[i]+'</span></label></div>';
-                   $(s).appendTo('#titles1');
-                }
-	        },
-	        progressall: function (e, data) {
-	            var progress = parseInt(data.loaded / data.total * 100, 10);
-	            $('#progress1 .progress-bar').css(
-	                'width',
-	                progress + '%'
-	            );
-	        }
-		}).prop('disabled', !$.support.fileInput)
-        .parent().addClass($.support.fileInput ? undefined : 'disabled');
-	</script> 
+	<script src="/xls/main.js"></script> 
 </body>
 </html>

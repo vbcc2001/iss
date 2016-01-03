@@ -32,6 +32,8 @@ public class Upload1 extends BaseAction {
 	public ActionResult doDefault() throws Exception {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		Map<String,Object> result = new HashMap<String,Object>();
+		String web_root_path = request.getSession().getServletContext().getRealPath("/");
+		String file_path = web_root_path+"WEB-INF/xls/csv/2.csv";
 		if(isMultipart){
 			DiskFileItemFactory factory = new DiskFileItemFactory();
 			ServletContext servletContext = this.getSession().getServletContext();
@@ -56,8 +58,7 @@ public class Upload1 extends BaseAction {
 			        // Process a file upload
 			        boolean writeToFile =true;
 			        if (writeToFile) {
-			            File uploadedFile = new File("D:/iss/XXX_ISS_WEB/WebRoot/xls/csv/2.csv");
-			            //File uploadedFile = new File("C:/XXX_ISS_DEV/XXX_ISS_WEB/WebRoot/xls/csv/2.csv");
+			            File uploadedFile = new File(file_path);
 			            item.write(uploadedFile);
 			        } else {
 			            //InputStream uploadedStream = item.getInputStream();
@@ -67,9 +68,7 @@ public class Upload1 extends BaseAction {
 			    }
 			}
 		}
-		//String pathname  = "C:/XXX_ISS_DEV/XXX_ISS_WEB/WebRoot/xls/csv/2.csv";
-		String pathname  = "D:/iss/XXX_ISS_WEB/WebRoot/xls/csv/2.csv";
-		File filename = new File(pathname); // 要读取以上路径的input。txt文件
+		File filename = new File(file_path); // 要读取以上路径的input。txt文件
 		// 建立一个输入流对象reader
 		InputStreamReader reader = new InputStreamReader(new FileInputStream(filename));
 		BufferedReader br =null;

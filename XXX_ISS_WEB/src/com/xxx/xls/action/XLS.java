@@ -25,21 +25,15 @@ public class XLS extends BaseAction {
 			response.setContentType("application/csv; charset=GBK");
 			response.setHeader("Content-disposition","filename=\"3.csv\"");
 			/* 读取一个文件 */
-			//HashMap<String,HashMap<String,String>> f1 = get("D:/iss/XXX_ISS_WEB/WebRoot/xls/csv/1.csv");
-			//HashMap<String,HashMap<String,String>> f2 = get("D:/iss/XXX_ISS_WEB/WebRoot/xls/csv/2.csv");  
-			HashMap<String,HashMap<String,String>> f1 = get("C:/XXX_ISS_DEV/XXX_ISS_WEB/WebRoot/xls/csv/1.csv");
-			HashMap<String,HashMap<String,String>> f2 = get("C:/XXX_ISS_DEV/XXX_ISS_WEB/WebRoot/xls/csv/2.csv");
-			//File f3 = new File("C:/XXX_ISS_DEV/XXX_ISS_WEB/WebRoot/xls/csv/3.csv");
-			//File f3 = new File("D:/iss/XXX_ISS_WEB/WebRoot/xls/csv/3.csv");
-			//if(!f3.exists()){  f3.createNewFile();   }
-			//FileWriter fileWritter = new FileWriter(f3.getName(),true);
-			//bufferWritter = new BufferedWriter(fileWritter);
-		      
+			String web_root_path = request.getSession().getServletContext().getRealPath("/");
+			HashMap<String,HashMap<String,String>> f1 = get(web_root_path+"WEB-INF/xls/csv/1.csv");
+			HashMap<String,HashMap<String,String>> f2 = get(web_root_path+"WEB-INF/xls/csv/2.csv");  
+			String titles = request.getParameter("titles");
+			String titles1 = request.getParameter("titles1");
+			String[] t= (titles+titles1).split(",");
 			//将f2合并到f1
 			for(String key : f1.keySet()){
-				//System.out.println( "f1==="+key+":"+f1.get(key));
 				if(f2.get(key)!=null){
-					//System.out.println( "f2==="+key+":"+f2.get(key));
 					for( String key2 : f2.get(key).keySet()){
 						f1.get(key).put(key2,f2.get(key).get(key2));
 					}
@@ -50,17 +44,15 @@ public class XLS extends BaseAction {
 				count ++;
 				if(count ==1){
 					String title = "行数";
-					for(String key2 : f1.get(key).keySet()){
+					for(String key2 : t){
 						title+=","+key2;
 					}
-					//bufferWritter.write(title+"\n");
 					this.getWriter().println(title);
 				}
 				String line = ""+count;
-				for(String key2 : f1.get(key).keySet()){
+				for(String key2 : t){
 					line+=","+f1.get(key).get(key2);
 				}
-				//bufferWritter.write(line+"\n");
 				this.getWriter().println(line);
 			}
 		}catch(Exception e){
@@ -70,7 +62,6 @@ public class XLS extends BaseAction {
 			    bufferWritter.close();
 			}
 		}
-		//return new ActionResult("/xls/csv/3.csv");
 		return null;
 	} 
 	/**
