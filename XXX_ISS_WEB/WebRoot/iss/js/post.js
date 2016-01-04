@@ -4,7 +4,7 @@ $("#btn_enter_doc").click(function(e){
 	if(doc_id==null){
 		var content ={"head":{"userID":"","sessionID":"","funcNO":"000007"},"content":{"name":"880000000"}} ;
 		content.content["weixin_open_id"] = getQueryString("openid");
-		content.content["user_type"] = getQueryString("doctor");
+		content.content["user_type"] = "doctor";
 		$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },
 		   function(result){
 				if(result.head.errorNo==""){
@@ -29,7 +29,7 @@ $("#btn_enter_pat").click(function(e){
 	if(pat_id==null){
 		var content ={"head":{"userID":"","sessionID":"","funcNO":"000007"},"content":{"name":"880000000"}} ;
 		content.content["weixin_open_id"] = getQueryString("openid");
-		content.content["user_type"] = getQueryString("patient");
+		content.content["user_type"] = "patient";
 		$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },
 		   function(result){
 				if(result.head.errorNo==""){
