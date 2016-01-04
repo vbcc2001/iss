@@ -2,8 +2,20 @@ $("#btn_enter_doc").click(function(e){
 	localStorage.setItem("flag","doc");
 	var doc_id = localStorage.getItem("doc_id");
 	if(doc_id==null){
-		$("#index").hide();
-		$("#reg_doc").show();
+		var content ={"head":{"userID":"","sessionID":"","funcNO":"000007"},"content":{"name":"880000000"}} ;
+		content.content["weixin_open_id"] = getQueryString("openid");
+		content.content["user_type"] = getQueryString("doctor");
+		$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },
+		   function(result){
+				if(result.head.errorNo==""){
+					localStorage.setItem("doc_id",result.list[0].id);
+					$("#index").hide();
+					$("#reg_doc_pat").show();
+				}else{
+					$("#index").hide();
+					$("#reg_doc").show();
+				}
+		 }, "json");
 	}else{
 		$("#index").hide();
 		$("#reg_doc_pat").show();
@@ -15,8 +27,20 @@ $("#btn_enter_pat").click(function(e){
 	localStorage.setItem("flag","pat");
 	var pat_id = localStorage.getItem("pat_id");
 	if(pat_id==null){
-		$("#index").hide();
-		$("#reg_pat").show();
+		var content ={"head":{"userID":"","sessionID":"","funcNO":"000007"},"content":{"name":"880000000"}} ;
+		content.content["weixin_open_id"] = getQueryString("openid");
+		content.content["user_type"] = getQueryString("patient");
+		$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },
+		   function(result){
+				if(result.head.errorNo==""){
+					localStorage.setItem("pat_id",result.list[0].id);
+					$("#index").hide();
+					$("#main").show();
+				}else{
+					$("#index").hide();
+					$("#reg_pat").show();
+				}
+		 }, "json");		
 	}else{
 		$("#index").hide();
 		$("#main").show();

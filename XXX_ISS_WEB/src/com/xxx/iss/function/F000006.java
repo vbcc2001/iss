@@ -1,6 +1,11 @@
 package com.xxx.iss.function;
 
 import com.xxx.iss.jdbc.DBConfigure;
+/**
+ * 记录医生/患者使用计数
+ * @author men
+ *
+ */
 public class F000006 extends BaseFunction   {
 
 	@Override

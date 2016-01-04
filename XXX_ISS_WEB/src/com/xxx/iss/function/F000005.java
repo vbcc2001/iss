@@ -5,7 +5,11 @@ import java.util.List;
 
 import com.xxx.iss.jdbc.DBConfigure;
 import com.xxx.iss.jdbc.DataRow;
-
+/**
+ * 查询医生/患者使用计数
+ * @author men
+ *
+ */
 public class F000005 extends BaseFunction   {
 
 	@Override

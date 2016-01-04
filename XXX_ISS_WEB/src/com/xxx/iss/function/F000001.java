@@ -9,7 +9,11 @@ import java.util.Map;
 import com.xxx.iss.helper.StringHelper;
 import com.xxx.iss.jdbc.DBConfigure;
 import com.xxx.iss.jdbc.DataRow;
-
+/**
+ * 医生注册
+ * @author men
+ *
+ */
 public class F000001 extends BaseFunction   {
 
 	@Override
@@ -18,7 +22,7 @@ public class F000001 extends BaseFunction   {
 		String doc_name = requestParameter.getParams().get("doc_name");
 		if(StringHelper.isEmpty(doc_name)){
 			response.setErrorNo("-1");
-			response.setErrorNo("名称不能为空！");
+			response.setErrorInfo("名称不能为空！");
 		}else{
 			//生成一个sessionID
 			String sessionID =StringHelper.getMD5(doc_name+String.valueOf(new Date().getTime()));
@@ -31,7 +35,7 @@ public class F000001 extends BaseFunction   {
 				response.setList(list);;
 			}else{
 				response.setErrorNo("-2");
-				response.setErrorNo("登记失败！");
+				response.setErrorInfo("登记失败！");
 			}
 		}
 		return response;

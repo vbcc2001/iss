@@ -5,7 +5,11 @@ import java.util.Map;
 
 import com.xxx.iss.helper.StringHelper;
 import com.xxx.iss.jdbc.DBConfigure;
-
+/**
+ * 记录病人iss评分
+ * @author men
+ *
+ */
 public class F000004 extends BaseFunction   {
 
 	@Override
@@ -18,13 +22,13 @@ public class F000004 extends BaseFunction   {
 		}
 		if(StringHelper.isEmpty(patient_code)){
 			response.setErrorNo("-1");
-			response.setErrorNo("名称不能为空！");
+			response.setErrorInfo("名称不能为空！");
 		}else{
 			if(this.update(requestParameter.getParams())>=0 ){
 				//无业务处理
 			}else{
 				response.setErrorNo("-2");
-				response.setErrorNo("登记失败！");
+				response.setErrorInfo("登记失败！");
 			}
 		}
 		return response;
