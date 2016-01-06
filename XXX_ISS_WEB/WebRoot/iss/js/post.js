@@ -106,7 +106,7 @@ $("#btn_reg_doc").click(function(e){
 	var $btn = $(this).button('处理中');
 	$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },
 	   function(result){
-	    	$btn.button('下一步')
+	    	$btn.button('下一步');
 			if(result.head.errorNo==""){
 				localStorage.setItem("doc_id",result.list[0].id);
 				$("#reg_doc").hide();
@@ -185,7 +185,7 @@ $("#btn_reg_pat").click(function(e){
 	var $btn = $(this).button('处理中');
 	$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },
 	   function(result){
-	    	$btn.button('下一步')
+	    	$btn.button('下一步');
 			if(result.head.errorNo==""){
 				localStorage.setItem("pat_id",result.list[0].id);
 				$("#reg_pat").hide();	
@@ -263,7 +263,7 @@ $("#btn_reg_doc_pat").click(function(e){
 	var $btn = $(this).button('处理中');
 	$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },
 	   function(result){
-	    	$btn.button('下一步')
+	    	$btn.button('下一步');
 			if(result.head.errorNo==""){
 				localStorage.setItem("doc_pat_id",result.list[0].id);
 				$("#reg_doc_pat").hide();	
@@ -310,3 +310,135 @@ function score(){
 	var content ={"head":{"userID":"","sessionID":"","funcNO":"000004"},"content":{"patient_code":patient_code,"iss_score":iss_score}} ;
 	$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) });
 }
+$("#btn_update_doc").click(function(e){
+	if($("#doc_name_update").val()=="") { 
+		$('.modal-body').html("姓名不能为空！");
+		$('#myModal').modal('show');
+		return;
+	}
+	if($("#doc_hospital_update").val()=="") { 
+		$('.modal-body').html("请填写医院！");
+		$('#myModal').modal('show');
+		return;
+	}
+	if($("#doc_phone_update").val()=="") { 
+		$('.modal-body').html("电话不能为空！");
+		$('#myModal').modal('show');
+		return;
+	}
+	if($("#doc_phone_update").val()!=""){
+		if(isNaN($("#doc_phone_update").val())) { 
+			$('.modal-body').html("手机格式错误");
+			$('#myModal').modal('show');
+			return;
+		}
+		if($("#doc_phone_update").val()<=1) { 
+			$('.modal-body').html("手机格式错误!");
+			$('#myModal').modal('show');
+			return;
+		}
+		if($("#doc_phone_update").val().length!=11) { 
+			$('.modal-body').html("手机格式错误!");
+			$('#myModal').modal('show');
+			return;
+		}
+	}
+	if($("#doc_email_update").val()=="") { 
+		$('.modal-body').html("邮箱不能为空！");
+		$('#myModal').modal('show');
+		return;
+	}
+	if($("#doc_email_update").val()!=""){
+		var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+		if(!reg.test($("#doc_email_update").val())){
+			$('.modal-body').html("邮箱格式错误!");
+			$('#myModal').modal('show');
+			return;
+		}
+	}
+	var content ={"head":{"userID":"","sessionID":"","funcNO":"000008"},"content":{}} ;
+	content.content["doc_name"] = $("#doc_name_update").val();
+	content.content["doc_hospital"] = $("#doc_hospital_update").val();
+	content.content["doc_room"] = $("#doc_room_update").val();
+	content.content["doc_job"] =$("#doc_job_update").val();
+	content.content["doc_phone"] = $("#doc_phone_update").val();
+	content.content["doc_email"] = $("#doc_email_update").val();
+	content.content["doc_tel"] = $("#doc_tel_update").val();	
+	content.content["doc_id"] = localStorage.getItem("doc_id");
+	$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },
+	   function(result){
+				$('.modal-body').html(result.head.errorInfo);
+				$('#myModal').modal('show');
+	 }, "json");
+});
+$("#btn_update_pat").click(function(e){
+	if($("#pat_name_update").val()=="") { 
+		$('.modal-body').html("姓名不能为空！");
+		$('#myModal').modal('show');
+		return;
+	}
+	if($('input[name="pat_sex_update"]:checked').val()==undefined) { 
+		$('.modal-body').html("性别不能为空！");
+		$('#myModal').modal('show');
+		return;
+	}
+	if($("#pat_age_update").val()=="") { 
+		$('.modal-body').html("年龄不能为空！");
+		$('#myModal').modal('show');
+		return;
+	}	
+	if($("#pat_age_update").val()!=""){	
+		if(isNaN($("#pat_age_update").val())) { 
+			$('.modal-body').html("年龄格式错误");
+			$('#myModal').modal('show');
+			return;
+		}
+		if($("#pat_age_update").val()<=0) { 
+			$('.modal-body').html("年龄格式错误!");
+			$('#myModal').modal('show');
+			return;
+		}
+	}
+	if($("#pat_phone_update").val()!=""){
+		if(isNaN($("#pat_phone_update").val())) { 
+			$('.modal-body').html("手机格式错误");
+			$('#myModal').modal('show');
+			return;
+		}
+		if($("#pat_phone_update").val()<=0) { 
+			$('.modal-body').html("手机格式错误!");
+			$('#myModal').modal('show');
+			return;
+		}
+		if($("#pat_phone_update").val().length!=11) { 
+			$('.modal-body').html("手机格式错误!");
+			$('#myModal').modal('show');
+			return;
+		}
+	}
+	if($("#pat_ill_date_update").val()=="") { 
+		$('.modal-body').html("受伤时间不能为空！");
+		$('#myModal').modal('show');
+		return;
+	}
+	if($("#pat_ill_type_update").val()=="") { 
+		$('.modal-body').html("受伤类型不能为空！");
+		$('#myModal').modal('show');
+		return;
+	}
+	var content ={"head":{"userID":"","sessionID":"","funcNO":"000009"},"content":{}} ;
+	content.content["pat_name"] = $("#pat_name_update").val();
+	content.content["pat_sex"] = $('input[name="pat_sex_update"]:checked ').val();
+	content.content["pat_age"] = $("#pat_age_update").val();
+	content.content["pat_add"] = $("#pat_add_update").val();
+	content.content["pat_phone"] = $("#pat_phone_update").val();
+	content.content["pat_ill_date"] = $("#pat_ill_date_update").val();
+	content.content["pat_ill_type"] = $("#pat_ill_type_update").val();
+	content.content["pat_hospital"] = $("#pat_hospital_update").val();
+	content.content["pat_id"] = localStorage.getItem("pat_id");
+	$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },
+	   function(result){
+		$('.modal-body').html(result.head.errorInfo);
+		$('#myModal').modal('show');
+	 }, "json");
+});

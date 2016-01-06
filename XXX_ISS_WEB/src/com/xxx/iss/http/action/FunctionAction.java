@@ -164,10 +164,12 @@ public class FunctionAction extends BaseAction {
     	if(functions!=null && functions.indexOf(requestParameter.getFuncNo())>=0 ){
     		flag = true;
 	    }else{
+	    	//目前不用登陆验证
+	    	flag = true;
     		//验证登陆
-	    	F000001 f000001 = new F000001();
+	    	//F000001 f000001 = new F000001();
     		//登陆验证
-    		flag = f000001.isLogin(requestParameter.getSessionID());
+    		//flag = f000001.isLogin(requestParameter.getSessionID());
     	}
     	return flag;
     }

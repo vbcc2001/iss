@@ -26,6 +26,62 @@ function bak_2(){
 	$("#sub").hide();
 	$("#main").show();
 }
+function update_user(){
+	var flag= localStorage.getItem("flag");
+	if(flag=="doc"){ 
+		var doc_id= localStorage.getItem("doc_id");
+		var content ={"head":{"userID":"","sessionID":"","funcNO":"000010"},"content":{"doc_id":doc_id}} ;
+		$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },function(result){
+			if(result.head.errorNo==""){
+				$("#doc_name_update").val(result.list[0].name);
+				$("#doc_hospital_update").val(result.list[0].com);
+				$("#doc_room_update").val(result.list[0].dept);
+				$("#doc_job_update").val(result.list[0].post);
+				$("#doc_phone_update").val(result.list[0].phone);
+				$("#doc_email_update").val(result.list[0].email);
+				$("#doc_tel_update").val(result.list[0].tel);
+				//显示界面
+				$("#main").hide();
+				$("#update_doc").show();
+			}else{
+				$('.modal-body').html(result.head.errorInfo);
+				$('#myModal').modal('show');
+			}
+		}, "json");
+	}
+	if(flag=="pat"){ 
+		var pat_id= localStorage.getItem("pat_id");
+		var content ={"head":{"userID":"","sessionID":"","funcNO":"000011"},"content":{"pat_id":pat_id}} ;
+		$.post("/action/iss/http/action/FunctionAction", { "jsonContent": JSON.stringify(content) },function(result){
+			if(result.head.errorNo==""){
+				$("#pat_name_update").val(result.list[0].name);
+				$('input[name="pat_sex_update"]').each(function(){
+					if($(this).val()==result.list[0].sex){ $(this).prop('checked',true); };
+				}); 
+				$("#pat_age_update").val(result.list[0].age);
+				$("#pat_add_update").val(result.list[0].address);
+				$("#pat_phone_update").val(result.list[0].phone);
+				$("#pat_ill_date_update").val(result.list[0].ill_date);
+				$("#pat_ill_type_update").val(result.list[0].ill_type);
+				$("#pat_hospital_update").val(result.list[0].hospital);
+				//显示界面
+				$("#main").hide();
+				$("#update_pat").show();
+			}else{
+				$('.modal-body').html(result.head.errorInfo);
+				$('#myModal').modal('show');
+			}
+		}, "json");
+	}
+}
+function back_doc(){
+	$("#update_doc").hide();
+	$("#main").show();
+}
+function back_pat(){
+	$("#update_pat").hide();
+	$("#main").show();
+}
 function reset(){
 	for(var i=0;i<c.length;i++){
 		for(var j=0;j<c[i].c.length;j++){
@@ -61,6 +117,7 @@ $(function(){
 	}, "json");	
 	//初始日期框
 	$('#pat_ill_date').datepicker({ language: "zh-CN" });
+	$('#pat_ill_date_update').datepicker({ language: "zh-CN" });	
 	$('#ill_date').datepicker({ language: "zh-CN" });	
 	//点击事件
 	$(".radmenu").click(function(e){
