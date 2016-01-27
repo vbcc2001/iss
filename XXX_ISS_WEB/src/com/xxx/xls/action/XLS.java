@@ -11,7 +11,7 @@ import com.xxx.iss.http.action.ActionResult;
 import com.xxx.iss.http.action.BaseAction;
 
 /**
- * 微信认证
+ * 文件合并
  * @author 门士松  20121031
  * @version 1.0
  * @since
@@ -21,9 +21,10 @@ public class XLS extends BaseAction {
 	public ActionResult doDefault() throws Exception {
 		
 		BufferedWriter bufferWritter = null;
+		response.setContentType("application/csv; charset=GBK");
+		response.setHeader("Content-disposition","filename=\"3.csv\"");
 		try{
-			response.setContentType("application/csv; charset=GBK");
-			response.setHeader("Content-disposition","filename=\"3.csv\"");
+			/**----------------文件读取-----------------------------------------------------------------------------------------------------------------**/
 			/* 读取一个文件 */
 			String web_root_path = request.getSession().getServletContext().getRealPath("/");
 			HashMap<String,HashMap<String,String>> f1 = get(web_root_path+"WEB-INF/xls/csv/1.csv");
@@ -31,14 +32,29 @@ public class XLS extends BaseAction {
 			String titles = request.getParameter("titles");
 			String titles1 = request.getParameter("titles1");
 			String[] t= (titles+titles1).split(",");
+			String merge = request.getParameter("merge");
+			String[] merge_s =null;
+			if(merge != null && !"".equals(merge) ){ merge_s= merge.split(","); }
+			/**----------------文件合并-----------------------------------------------------------------------------------------------------------------**/
 			//将f2合并到f1
 			for(String key : f1.keySet()){
 				if(f2.get(key)!=null){
+					//合并f1和f2两个文件
 					for( String key2 : f2.get(key).keySet()){
 						f1.get(key).put(key2,f2.get(key).get(key2));
 					}
+					//将指定的f2列添加到f1列
+					if(merge_s!=null){
+						for(String m_s : merge_s  ){
+							String[] m = m_s.split("@-@-@");
+							if( f1.get(key).get(m[0]) ==null || "".equals(f1.get(key).get(m[0]).trim())){
+								f1.get(key).put(m[0],f2.get(key).get(m[1]));
+							}
+						}
+					}
 				}
 			}
+			/**----------------文件输出-----------------------------------------------------------------------------------------------------------------**/
 			int count = 0;
 			for(String key :f1.keySet()){
 				count ++;

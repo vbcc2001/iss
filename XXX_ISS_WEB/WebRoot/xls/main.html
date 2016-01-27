@@ -12,7 +12,7 @@
 </head>
 <body>
     <br>
-    <!-- The fileinput-button span is used to style the file input field as button -->
+    <!-- ***************************************************上传第一个文件******************************************************************************************* -->
     <span class="btn btn-success fileinput-button">
         <i class="glyphicon glyphicon-plus"></i>
         <span>上传第一个文件...</span>
@@ -29,7 +29,9 @@
     <div id="files" class="files"></div>
     <br>
    <div class="row"  id ="titles"><div class="col-md-12"><label><span id="file_name"></span></label></div></div>
-    <!-- The fileinput-button span is used to style the file input field as button -->
+    <br>
+    <hr style=" height:2px;border:none;border-top:2px dotted #185598;" />
+    <!-- ***************************************************上传第二个文件******************************************************************************************* -->
     <span class="btn btn-success fileinput-button">
         <i class="glyphicon glyphicon-plus"></i>
         <span>上传第二个文件...</span>
@@ -46,8 +48,24 @@
     <div id="files1" class="files"></div>
     <br>
    <div class="row"  id ="titles1"><div class="col-md-12"><label><span id="file1_name"></span></label></div></div>
-   
-    <!-- The fileinput-button span is used to style the file input field as button -->
+    <br>
+    <hr style=" height:2px;border:none;border-top:2px dotted #185598;" />
+    <!-- ***************************************************选择合并的列******************************************************************************************* -->
+    <span class="btn btn-success"><span>选择合并的列</span></span><br><br>
+    <div id="merge_div"></div>
+    <div class="row">
+      <div class="col-xs-1"  style="width:80px;padding-top: 6px;">文件1</div>
+	  <div class="col-xs-2"><select class="form-control" name="select_1" id="select_1"><option value=""></option></select></div>
+	  <div class="col-xs-2"  style="width:60px;padding-top: 6px;">合并</div>
+	  <div class="col-xs-1"  style="width:80px;padding-top: 6px; ">文件2</div>
+	  <div class="col-xs-2"><select class="form-control"  name="select_2" id="select_2"><option value=""></option></select></div>
+      <div class="col-xs-2"><span id="merge" class="btn btn-success"><span>+</span></span></div>
+    </div>
+    <br> 
+    <br> 
+    <br>
+    <hr style=" height:2px;border:none;border-top:2px dotted #185598;" />
+    <!-- ***************************************************合并后下载******************************************************************************************* -->
     <span id="main" class="btn btn-success"><span>合并后下载</span></span> 
     <br> 
     <br>  
