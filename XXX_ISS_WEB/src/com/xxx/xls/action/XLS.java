@@ -47,9 +47,7 @@ public class XLS extends BaseAction {
 					if(merge_s!=null){
 						for(String m_s : merge_s  ){
 							String[] m = m_s.split("@-@-@");
-							if( f1.get(key).get(m[0]) ==null || "".equals(f1.get(key).get(m[0]).trim())){
-								f1.get(key).put(m[0],f2.get(key).get(m[1]));
-							}
+							f1.get(key).put(m[0],f2.get(key).get(m[1]));
 						}
 					}
 				}
