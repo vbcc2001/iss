@@ -1,4 +1,4 @@
-<!DOCTYPE PUBLIC> 
+﻿<!DOCTYPE PUBLIC> 
 <resin xmlns="http://caucho.com/ns/resin" xmlns:resin="http://caucho.com/ns/resin/core">
 	<!--*************************** 加载resin/lib下的所有.jar文件 *************************** -->
 	<class-loader>
@@ -21,7 +21,7 @@
 		<root-directory>.</root-directory>
 		<server-default>
 			<!-- HTTP服务的端口 -->
-			<http address="*" port="8089" />
+			<http address="*" port="80" />
 			<!-- - JVM参数设置 -->
 			<jvm-arg>-Xmx256m</jvm-arg>
 			<jvm-arg>-Xss1m</jvm-arg>
