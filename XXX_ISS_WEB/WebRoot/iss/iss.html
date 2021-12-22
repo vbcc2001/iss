@@ -6,356 +6,362 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>ISS评分</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/bootstrap-datepicker.min.css">	
-	<link rel="stylesheet" href="css/style.css">	
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.min.css">    
+    <link rel="stylesheet" href="css/style.css">    
   </head>
   <body class="background">
     <div class="container">
       <div style="text-align: center;margin-top: 80px;" id="index">
-		  <h3>损伤严重程度评分</h3>
-		  <h5>Injury Severe Score. ISS</h5>
-		  <div style="text-align: center;margin-top:40px;margin-bottom:40px"><img style="width: 100px;height: 100px;" src="img/code.jpg"/></div>  
-		  <h5 style="font-family:'simsun';">医生的助手，患者的窗口</h5>  
-		  <h6>In the service of doctors and patients</h6>
-		  <div style="margin-top: 60px;">
-			<button id="btn_enter_doc" type="button" class="btn btn-default" >医&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp生</button>
-			<span style="margin: 0 30px;"></span>
-			<button  id="btn_enter_pat" type="button" class="btn btn-primary" >患&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp者</button>
-		  </div>
-		  <div>
-			<button  id="click_count_doc"  type="button" class="btn btn-link view" style="margin-left:-10px;"></button>
-			<span style="margin: 0 30px;"></span>
-			<button  id="click_count_pat"  type="button" class="btn btn-link view" style="margin-right:6px;"></button>
-		  </div>
-	  
+          <h3>损伤严重程度评分</h3>
+          <h5>Injury Severe Score. ISS</h5>
+          <div style="text-align: center;margin-top:40px;margin-bottom:40px"><img style="width: 100px;height: 100px;" src="img/code.jpg"/></div>  
+          <h5 style="font-family:'simsun';">医生的助手，患者的窗口</h5>  
+          <h6>In the service of doctors and patients</h6>
+          <div style="margin-top: 60px;">
+            <button id="btn_enter_doc" type="button" class="btn btn-default" >医&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp生</button>
+            <span style="margin: 0 30px;"></span>
+            <button  id="btn_enter_pat" type="button" class="btn btn-primary" >患&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp者</button>
+          </div>
+          <div>
+            <button  id="click_count_doc"  type="button" class="btn btn-link view" style="margin-left:-10px;"></button>
+            <span style="margin: 0 30px;"></span>
+            <button  id="click_count_pat"  type="button" class="btn btn-link view" style="margin-right:6px;"></button>
+          </div>
+      
       </div>
-	  <div  id="reg_doc" style="display:none;text-align: center;margin-top: 10px;">
-		<h3>ISS评分专业版</h3>
-		<div style="width:280px;text-align:left;margin:auto auto;padding-top:10px;">
-			<form class="form-horizontal">
-				<div class="form-group has-error" >
-					<label for="doc_name" class="col-xs-4 control-label">*医生姓名</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_name" placeholder=""></div>	
-				</div>
-				<div class="form-group has-error">
-					<label for="doc_hospital" class="col-xs-4 control-label">*医院</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_hospital" placeholder=""></div>			
-				</div>
-				<div class="form-group">
-					<label for="doc_room" class="col-xs-4 control-label">科室</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_room" placeholder=""></div>			
-				</div>		
-				<div class="form-group">
-					<label for="doc_job" class="col-xs-4 control-label">职称</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_job" placeholder=""></div>			
-				</div>
-				<div class="form-group has-error">
-					<label for="doc_phone" class="col-xs-4 control-label">*联系电话</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_phone" placeholder=""></div>			
-				</div>
-				<div class="form-group has-error">
-					<label for="doc_email" class="col-xs-4 control-label">*电子邮箱</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="email" class="form-control" id="doc_email" placeholder=""></div>			
-				</div>
-				<div class="form-group">
-					<label for="doc_tel" class="col-xs-4 control-label">科室电话</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_tel" placeholder=""></div>			
-				</div>		
-			</form>
-		</div>
-		<div style="margin-top: 30px;margin-bottom:10px;">
-			<button id="btn_reg_doc" type="button" class="btn btn-default get_score" >下&nbsp&nbsp一&nbsp&nbsp步</button>	
-			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp	
-			<button id="btn_skip_doc" type="button" class="btn btn-default button" onclick="skip_doc()">跳&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp过</button>
-		</div>	
-	  </div>
-	  <div  id="reg_doc_pat" style="display:none;text-align: center;margin-top: 10px;">
-		<h4>请登记患者信息</h4>
-		<div style="width:280px;text-align:left;margin:auto auto;padding-top:10px;">
-			<form class="form-horizontal">
-				<div class="form-group has-error">
-					<label for="name" class="col-xs-4 control-label">*患者姓名</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="name" placeholder=""></div>			
-				</div>
-				<div class="form-group has-error">
-					<label for="sex" class="col-xs-4 control-label">*性别</label>
-					<div class="col-xs-8" style="padding-left: 0px;">
-						<label class="radio-inline"><input type="radio" name="sex" id="sex_1" value="男"> 男性</label>
-						<label class="radio-inline"><input type="radio" name="sex" id="sex_2" value="女"> 女性</label>
-					</div>				
-				</div>
-				<div class="form-group has-error">
-					<label for="age" class="col-xs-4 control-label">*年龄</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="age" placeholder=""></div>			
-				</div>		
-				<div class="form-group">
-					<label for="add" class="col-xs-4 control-label">住址</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="add" placeholder=""></div>			
-				</div>
-				<div class="form-group">
-					<label for="phone" class="col-xs-4 control-label">联系电话</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="phone" placeholder=""></div>			
-				</div>
-				<div class="form-group date has-error"  data-date-format="yyyy-mm-dd-mm">
-					<label for="ill_date" class="col-xs-4 control-label">*受伤时间</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="ill_date" placeholder="" readonly="readonly"></div>			
-				</div>
-				<div class="form-group has-error">
-					<label for="ill_type" class="col-xs-4 control-label">*受伤类型</label>
-					<div class="col-xs-8" style="padding-left: 0px;">
-						<select class="form-control" id="ill_type">
-						  <option></option>
-						  <option>车祸</option>
-						  <option>坠落伤</option>
-						  <option>烧伤</option>
-						  <option>锐器/钝器伤</option>
-						  <option>枪击伤</option>						  
-						  <option>生活伤</option>
-						  <option>其他</option>						  
-						</select>
-					</div>			
-				</div>		
-			</form>			
-		</div>	  
-		<div style="margin-top: 30px;margin-bottom:10px;">
-			<button  id="btn_reg_doc_pat" type="button" class="btn btn-default get_score" >登&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp记</button>
-			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-			<button type="button" class="btn btn-default button" onclick="skip_doc_pat()">跳&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp过</button>
-		</div>		  
-	  </div>	  
-	  <div  id="reg_pat" style="display:none;text-align: center;margin-top: 10px;">
-		<h3>ISS评分大众版</h3>
-		<div style="width:280px;text-align:left;margin:auto auto;padding-top:10px;">
-			<form class="form-horizontal">
-				<div class="form-group has-error">
-					<label for="name" class="col-xs-4 control-label">*患者姓名</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_name" placeholder=""></div>			
-				</div>
-				<div class="form-group has-error">
-					<label for="sex" class="col-xs-4 control-label">*性别</label>
-					<div class="col-xs-8" style="padding-left: 0px;">
-						<label class="radio-inline"><input type="radio" name="pat_sex" id="pat_sex_1" value="男"> 男性</label>
-						<label class="radio-inline"><input type="radio" name="pat_sex" id="pat_sex_2" value="女"> 女性</label>
-					</div>				
-				</div>
-				<div class="form-group has-error">
-					<label for="age" class="col-xs-4 control-label">*年龄</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_age" placeholder=""></div>			
-				</div>		
-				<div class="form-group">
-					<label for="add" class="col-xs-4 control-label">住址</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_add" placeholder=""></div>			
-				</div>
-				<div class="form-group">
-					<label for="phone" class="col-xs-4 control-label">联系电话</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_phone" placeholder=""></div>			
-				</div>
-				<div class="form-group has-error">
-					<label for="ill_date" class="col-xs-4 control-label">*受伤时间</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_ill_date" placeholder="" readonly="readonly" ></div>			
-				</div>
-				<div class="form-group has-error">
-					<label for="ill_type" class="col-xs-4 control-label">*受伤类型</label>
-					<div class="col-xs-8" style="padding-left: 0px;">
-						<select class="form-control" id="pat_ill_type">
-						  <option></option>						
-						  <option>车祸</option>
-						  <option>坠落伤</option>
-						  <option>烧伤</option>
-						  <option>锐器/钝器伤</option>
-						  <option>枪击伤</option>						  
-						  <option>生活伤</option>
-						  <option>其他</option>						  
-						</select>
-					</div>			
-				</div>		
-				<div class="form-group">
-					<label for="hospital" class="col-xs-4 control-label">治疗医院</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_hospital" placeholder=""></div>			
-				</div>	
-			</form>			
-		</div>	  
-		<div style="margin-top: 30px;margin-bottom:10px;">
-			<button id="btn_reg_pat" type="button" class="btn btn-default get_score" >下&nbsp&nbsp一&nbsp&nbsp步</button>
-			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-			<button type="button" class="btn btn-default button" onclick="skip_pat()">跳&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp过</button>
-		</div>		  
-	  </div>	  	  
-	  <div  id="main" style="display:none;text-align: center;">
-		<div style="text-align: center;margin-top: 40px;" ><h5>请根据实际情况选择评分项目，完成后点击"进行评分"</h5></div>
-		<div style=" position:relative;height:320px;"> 		
-			<button type="button" class="btn btn-default radmenu_main ">项目</button>
-			<button type="button" class="btn btn-default radmenu size-0" id="0"><p>头颈部</p></button>		
-			<button type="button" class="btn btn-default radmenu size-1" id="1"><p>面部</p></button>
-			<button type="button" class="btn btn-default radmenu size-2" id="2"><p>胸部</p></button>
-			<button type="button" class="btn btn-default radmenu size-3" id="3"><p>腹部</p></button>
-			<button type="button" class="btn btn-default radmenu size-4" id="4"><p>四肢</p></button>
-			<button type="button" class="btn btn-default radmenu size-5" id="5"><p>体表</p></button>
-		</div>
-		 <div class="navbar navbar-default result" >
-				<ul class="nav navbar-nav" style="margin: 0 0;">
-				  <li style="width:100px;float:left; "><a id="iss" style="padding-top:6px;padding-bottom:0px;font-size:12px;color:#142341">ISS评分<br>-</a></li>
-				  <li style="width:100px;float:left;"><a id="ais"  style="padding-top:6px;padding-bottom:0px;font-size:12px;color:#142341">AIS评分<br>-</a></li>
-				  <li style="width:100px;float:left;"><a id="rank" style="padding-top:6px;padding-bottom:0px;font-size:12px;color:#142341">严重程度<br>-</a></li>
-				</ul>
-		 </div>		 
-		<div style="margin-top: 30px;">
-			<button type="button" class="btn btn-default button" onclick="bak_1()">返回首页</button>
-			<button type="button" class="btn btn-default get_score" onclick="score()">进行评分</button>
-			<button type="button" class="btn btn-default button" onclick="reset()">重新测试</button>
-		</div>
-		<div style="text-align: center;margin-top: 10px;" ><h5><a class="btn btn-link" style="width:320px;text-align:right;" onclick="update_user()">修改个人信息</a></h5></div>	
-	  </div>	
-	  <div  id="sub" style="display:none ; text-align: center;margin: 0 auto; max-width:400px">
-		<div style="margin-top: 0px;text-align:left;">
-			<div class="row">
-			  <div class="col-xs-6 background" style="height:120px;width:120px;padding:0 0;">
-				<img  class="background" id="sub_img" style="width:120px;"/>
-			  </div>
-			  <div class="col-xs-6" style="padding-top:40px;padding-left: 0px;">
-					<h4 id="sub_title_cn"></h4>
-					<h6 id="sub_title_en"></h6>
-			  </div>
-		   </div>
-			<div class="row">
-			  <div class="col-xs-6" style="height:360px;width:140px;padding:0 0;">
-				<ul id="sub_ul" style="-webkit-padding-start:6px;"></ul>
-			  </div>
-			  <div class="col-xs-6" style="padding:0;" id="list" >
-				<div class="content" ><button class="btn btn-default score panel-5" score="5"></button></div>
-				<div class="content" ><button class="btn btn-default score panel-4" score="4"></button></div>
-				<div class="content" ><button class="btn btn-default score panel-3" score="3"></button></div>
-				<div class="content" ><button class="btn btn-default score panel-2" score="2"></button></div>
-				<div class="content" ><button class="btn btn-default score panel-1" score="1"></button></div>
-			  </div>
-		   </div>
-	   </div>
-		<div style="margin-top: 6px;">
-			<button type="button" class="btn btn-default button" onclick="bak_2()">返回上页</button>
-			<button type="button" class="btn btn-default get_score" onclick="bak_2()">完&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp成</button>
-			<button type="button" class="btn btn-default button" onclick="reset()">重新测试</button>
-		</div>  	   
-	  </div>
-	  <div  id="update_doc" style="display:none; text-align: center; margin-top: 10px;">
-		<h3>医生信息修改</h3>
-		<div style="width:280px;text-align:left;margin:auto auto;padding-top:10px;">
-			<form class="form-horizontal">
-				<div class="form-group has-error" >
-					<label for="doc_name" class="col-xs-4 control-label">*医生姓名</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_name_update" placeholder=""></div>	
-				</div>
-				<div class="form-group has-error">
-					<label for="doc_hospital_update" class="col-xs-4 control-label">*医院</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_hospital_update" placeholder=""></div>			
-				</div>
-				<div class="form-group">
-					<label for="doc_room_update" class="col-xs-4 control-label">科室</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_room_update" placeholder=""></div>			
-				</div>		
-				<div class="form-group">
-					<label for="doc_job_update" class="col-xs-4 control-label">职称</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_job_update" placeholder=""></div>			
-				</div>
-				<div class="form-group has-error">
-					<label for="doc_phone_update" class="col-xs-4 control-label">*联系电话</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_phone_update" placeholder=""></div>			
-				</div>
-				<div class="form-group has-error">
-					<label for="doc_email_update" class="col-xs-4 control-label">*电子邮箱</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="email" class="form-control" id="doc_email_update" placeholder=""></div>			
-				</div>
-				<div class="form-group">
-					<label for="doc_tel_update" class="col-xs-4 control-label">科室电话</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_tel_update" placeholder=""></div>			
-				</div>		
-			</form>
-		</div>
-		<div style="margin-top: 30px;margin-bottom:10px;">
-			<button id="btn_update_doc" type="button" class="btn btn-default get_score" >修&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp改</button>	
-			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp	
-			<button id="btn_back_doc" type="button" class="btn btn-default button" onclick="back_doc()">返&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp回</button>
-		</div>	
-	  </div>	  
-	  <div  id="update_pat" style="display:none;text-align: center;margin-top: 10px;">
-		<h3>患者信息修改</h3>
-		<div style="width:280px;text-align:left;margin:auto auto;padding-top:10px;">
-			<form class="form-horizontal">
-				<div class="form-group has-error">
-					<label for="name" class="col-xs-4 control-label">*患者姓名</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_name_update" placeholder=""></div>			
-				</div>
-				<div class="form-group has-error">
-					<label for="sex" class="col-xs-4 control-label">*性别</label>
-					<div class="col-xs-8" style="padding-left: 0px;">
-						<label class="radio-inline"><input type="radio" name="pat_sex_update" id="pat_sex_1" value="男"> 男性</label>
-						<label class="radio-inline"><input type="radio" name="pat_sex_update" id="pat_sex_2" value="女"> 女性</label>
-					</div>				
-				</div>
-				<div class="form-group has-error">
-					<label for="age" class="col-xs-4 control-label">*年龄</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_age_update" placeholder=""></div>			
-				</div>		
-				<div class="form-group">
-					<label for="add" class="col-xs-4 control-label">住址</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_add_update" placeholder=""></div>			
-				</div>
-				<div class="form-group">
-					<label for="phone" class="col-xs-4 control-label">联系电话</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_phone_update" placeholder=""></div>			
-				</div>
-				<div class="form-group has-error">
-					<label for="ill_date" class="col-xs-4 control-label">*受伤时间</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_ill_date_update" placeholder="" readonly="readonly" ></div>			
-				</div>
-				<div class="form-group has-error">
-					<label for="ill_type" class="col-xs-4 control-label">*受伤类型</label>
-					<div class="col-xs-8" style="padding-left: 0px;">
-						<select class="form-control" id="pat_ill_type_update">
-						  <option></option>						
-						  <option>车祸</option>
-						  <option>坠落伤</option>
-						  <option>烧伤</option>
-						  <option>锐器/钝器伤</option>
-						  <option>枪击伤</option>						  
-						  <option>生活伤</option>
-						  <option>其他</option>						  
-						</select>
-					</div>			
-				</div>		
-				<div class="form-group">
-					<label for="hospital" class="col-xs-4 control-label">治疗医院</label>
-					<div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_hospital_update" placeholder=""></div>			
-				</div>	
-			</form>			
-		</div>	  
-		<div style="margin-top: 30px;margin-bottom:10px;">
-			<button id="btn_update_pat" type="button" class="btn btn-default get_score" >修&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp改</button>
-			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-			<button id="btn_back_pat" type="button" class="btn btn-default button" onclick="back_pat()">返&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp回</button>
-		</div>		  
-	  </div>
+      <div  id="reg_doc" style="display:none;text-align: center;margin-top: 10px;">
+        <h3>ISS评分专业版</h3>
+        <div style="width:280px;text-align:left;margin:auto auto;padding-top:10px;">
+            <form class="form-horizontal">
+                <div class="form-group has-error" >
+                    <label for="doc_name" class="col-xs-4 control-label">*医生姓名</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_name" placeholder=""></div>    
+                </div>
+                <div class="form-group has-error">
+                    <label for="doc_hospital" class="col-xs-4 control-label">*医院</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_hospital" placeholder=""></div>            
+                </div>
+                <div class="form-group">
+                    <label for="doc_room" class="col-xs-4 control-label">科室</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_room" placeholder=""></div>            
+                </div>        
+                <div class="form-group">
+                    <label for="doc_job" class="col-xs-4 control-label">职称</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_job" placeholder=""></div>            
+                </div>
+                <div class="form-group has-error">
+                    <label for="doc_phone" class="col-xs-4 control-label">*联系电话</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_phone" placeholder=""></div>            
+                </div>
+                <div class="form-group has-error">
+                    <label for="doc_email" class="col-xs-4 control-label">*电子邮箱</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="email" class="form-control" id="doc_email" placeholder=""></div>            
+                </div>
+                <div class="form-group">
+                    <label for="doc_tel" class="col-xs-4 control-label">科室电话</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_tel" placeholder=""></div>            
+                </div>        
+            </form>
+        </div>
+        <div style="margin-top: 30px;margin-bottom:10px;">
+            <button id="btn_reg_doc" type="button" class="btn btn-default get_score" >下&nbsp&nbsp一&nbsp&nbsp步</button>    
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+            <button id="btn_skip_doc" type="button" class="btn btn-default button" onclick="skip_doc()">跳&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp过</button>
+        </div>    
+      </div>
+      <div  id="reg_doc_pat" style="display:none;text-align: center;margin-top: 10px;">
+        <h4>请登记患者信息</h4>
+        <div style="width:280px;text-align:left;margin:auto auto;padding-top:10px;">
+            <form class="form-horizontal">
+                <div class="form-group has-error">
+                    <label for="name" class="col-xs-4 control-label">*患者姓名</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="name" placeholder=""></div>            
+                </div>
+                <div class="form-group has-error">
+                    <label for="sex" class="col-xs-4 control-label">*性别</label>
+                    <div class="col-xs-8" style="padding-left: 0px;">
+                        <label class="radio-inline"><input type="radio" name="sex" id="sex_1" value="男"> 男性</label>
+                        <label class="radio-inline"><input type="radio" name="sex" id="sex_2" value="女"> 女性</label>
+                    </div>                
+                </div>
+                <div class="form-group has-error">
+                    <label for="age" class="col-xs-4 control-label">*年龄</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="age" placeholder=""></div>            
+                </div>        
+                <div class="form-group">
+                    <label for="add" class="col-xs-4 control-label">住址</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="add" placeholder=""></div>            
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="col-xs-4 control-label">联系电话</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="phone" placeholder=""></div>            
+                </div>
+                <div class="form-group date has-error"  data-date-format="yyyy-mm-dd-mm">
+                    <label for="ill_date" class="col-xs-4 control-label">*受伤时间</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="ill_date" placeholder="" readonly="readonly"></div>            
+                </div>
+                <div class="form-group has-error">
+                    <label for="ill_type" class="col-xs-4 control-label">*受伤类型</label>
+                    <div class="col-xs-8" style="padding-left: 0px;">
+                        <select class="form-control" id="ill_type">
+                          <option></option>
+                          <option>车祸</option>
+                          <option>坠落伤</option>
+                          <option>烧伤</option>
+                          <option>锐器/钝器伤</option>
+                          <option>枪击伤</option>                          
+                          <option>生活伤</option>
+                          <option>其他</option>                          
+                        </select>
+                    </div>            
+                </div>        
+            </form>            
+        </div>      
+        <div style="margin-top: 30px;margin-bottom:10px;">
+            <button  id="btn_reg_doc_pat" type="button" class="btn btn-default get_score" >登&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp记</button>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <button type="button" class="btn btn-default button" onclick="skip_doc_pat()">跳&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp过</button>
+        </div>          
+      </div>      
+      <div  id="reg_pat" style="display:none;text-align: center;margin-top: 10px;">
+        <h3>ISS评分大众版</h3>
+        <div style="width:280px;text-align:left;margin:auto auto;padding-top:10px;">
+            <form class="form-horizontal">
+                <div class="form-group has-error">
+                    <label for="name" class="col-xs-4 control-label">*患者姓名</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_name" placeholder=""></div>            
+                </div>
+                <div class="form-group has-error">
+                    <label for="sex" class="col-xs-4 control-label">*性别</label>
+                    <div class="col-xs-8" style="padding-left: 0px;">
+                        <label class="radio-inline"><input type="radio" name="pat_sex" id="pat_sex_1" value="男"> 男性</label>
+                        <label class="radio-inline"><input type="radio" name="pat_sex" id="pat_sex_2" value="女"> 女性</label>
+                    </div>                
+                </div>
+                <div class="form-group has-error">
+                    <label for="age" class="col-xs-4 control-label">*年龄</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_age" placeholder=""></div>            
+                </div>        
+                <div class="form-group">
+                    <label for="add" class="col-xs-4 control-label">住址</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_add" placeholder=""></div>            
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="col-xs-4 control-label">联系电话</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_phone" placeholder=""></div>            
+                </div>
+                <div class="form-group has-error">
+                    <label for="ill_date" class="col-xs-4 control-label">*受伤时间</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_ill_date" placeholder="" readonly="readonly" ></div>            
+                </div>
+                <div class="form-group has-error">
+                    <label for="ill_type" class="col-xs-4 control-label">*受伤类型</label>
+                    <div class="col-xs-8" style="padding-left: 0px;">
+                        <select class="form-control" id="pat_ill_type">
+                          <option></option>                        
+                          <option>车祸</option>
+                          <option>坠落伤</option>
+                          <option>烧伤</option>
+                          <option>锐器/钝器伤</option>
+                          <option>枪击伤</option>                          
+                          <option>生活伤</option>
+                          <option>其他</option>                          
+                        </select>
+                    </div>            
+                </div>        
+                <div class="form-group">
+                    <label for="hospital" class="col-xs-4 control-label">治疗医院</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_hospital" placeholder=""></div>            
+                </div>    
+            </form>            
+        </div>      
+        <div style="margin-top: 30px;margin-bottom:10px;">
+            <button id="btn_reg_pat" type="button" class="btn btn-default get_score" >下&nbsp&nbsp一&nbsp&nbsp步</button>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <button type="button" class="btn btn-default button" onclick="skip_pat()">跳&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp过</button>
+        </div>          
+      </div>            
+      <div  id="main" style="display:none;text-align: center;">
+        <div style="text-align: center;margin-top: 40px;" ><h5>请根据实际情况选择评分项目，完成后点击"进行评分"</h5></div>
+        <div style=" position:relative;height:320px;">         
+            <button type="button" class="btn btn-default radmenu_main ">项目</button>
+            <button type="button" class="btn btn-default radmenu size-0" id="0"><p>头颈部</p></button>        
+            <button type="button" class="btn btn-default radmenu size-1" id="1"><p>面部</p></button>
+            <button type="button" class="btn btn-default radmenu size-2" id="2"><p>胸部</p></button>
+            <button type="button" class="btn btn-default radmenu size-3" id="3"><p>腹部</p></button>
+            <button type="button" class="btn btn-default radmenu size-4" id="4"><p>四肢</p></button>
+            <button type="button" class="btn btn-default radmenu size-5" id="5"><p>体表</p></button>
+        </div>
+         <div class="navbar navbar-default result" >
+                <ul class="nav navbar-nav" style="margin: 0 0;">
+                  <li style="width:100px;float:left; "><a id="iss" style="padding-top:6px;padding-bottom:0px;font-size:12px;color:#142341">ISS评分<br>-</a></li>
+                  <li style="width:100px;float:left;"><a id="ais"  style="padding-top:6px;padding-bottom:0px;font-size:12px;color:#142341">AIS评分<br>-</a></li>
+                  <li style="width:100px;float:left;"><a id="rank" style="padding-top:6px;padding-bottom:0px;font-size:12px;color:#142341">严重程度<br>-</a></li>
+                </ul>
+         </div>         
+        <div style="margin-top: 30px;">
+            <button type="button" class="btn btn-default button" onclick="bak_1()">返回首页</button>
+            <button type="button" class="btn btn-default get_score" onclick="score()">进行评分</button>
+            <button type="button" class="btn btn-default button" onclick="reset()">重新测试</button>
+        </div>
+        <div style="text-align: center;margin-top: 10px;" ><h5><a class="btn btn-link" style="width:320px;text-align:right;" onclick="update_user()">修改个人信息</a></h5></div>    
+      </div>    
+      <div  id="sub" style="display:none ; text-align: center;margin: 0 auto; max-width:400px">
+        <div style="margin-top: 0px;text-align:left;">
+            <div class="row">
+              <div class="col-xs-6 background" style="height:120px;width:120px;padding:0 0;">
+                <img  class="background" id="sub_img" style="width:120px;"/>
+              </div>
+              <div class="col-xs-6" style="padding-top:40px;padding-left: 0px;">
+                    <h4 id="sub_title_cn"></h4>
+                    <h6 id="sub_title_en"></h6>
+              </div>
+           </div>
+            <div class="row">
+              <div class="col-xs-6" style="height:360px;width:140px;padding:0 0;">
+                <ul id="sub_ul" style="-webkit-padding-start:6px;"></ul>
+              </div>
+              <div class="col-xs-6" style="padding:0;" id="list" >
+                <div class="content" ><button class="btn btn-default score panel-5" score="5"></button></div>
+                <div class="content" ><button class="btn btn-default score panel-4" score="4"></button></div>
+                <div class="content" ><button class="btn btn-default score panel-3" score="3"></button></div>
+                <div class="content" ><button class="btn btn-default score panel-2" score="2"></button></div>
+                <div class="content" ><button class="btn btn-default score panel-1" score="1"></button></div>
+              </div>
+           </div>
+       </div>
+        <div style="margin-top: 6px;">
+            <button type="button" class="btn btn-default button" onclick="bak_2()">返回上页</button>
+            <button type="button" class="btn btn-default get_score" onclick="bak_2()">完&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp成</button>
+            <button type="button" class="btn btn-default button" onclick="reset()">重新测试</button>
+        </div>         
+      </div>
+      <div  id="update_doc" style="display:none; text-align: center; margin-top: 10px;">
+        <h3>医生信息修改</h3>
+        <div style="width:280px;text-align:left;margin:auto auto;padding-top:10px;">
+            <form class="form-horizontal">
+                <div class="form-group has-error" >
+                    <label for="doc_name" class="col-xs-4 control-label">*医生姓名</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_name_update" placeholder=""></div>    
+                </div>
+                <div class="form-group has-error">
+                    <label for="doc_hospital_update" class="col-xs-4 control-label">*医院</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_hospital_update" placeholder=""></div>            
+                </div>
+                <div class="form-group">
+                    <label for="doc_room_update" class="col-xs-4 control-label">科室</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_room_update" placeholder=""></div>            
+                </div>        
+                <div class="form-group">
+                    <label for="doc_job_update" class="col-xs-4 control-label">职称</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_job_update" placeholder=""></div>            
+                </div>
+                <div class="form-group has-error">
+                    <label for="doc_phone_update" class="col-xs-4 control-label">*联系电话</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_phone_update" placeholder=""></div>            
+                </div>
+                <div class="form-group has-error">
+                    <label for="doc_email_update" class="col-xs-4 control-label">*电子邮箱</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="email" class="form-control" id="doc_email_update" placeholder=""></div>            
+                </div>
+                <div class="form-group">
+                    <label for="doc_tel_update" class="col-xs-4 control-label">科室电话</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="doc_tel_update" placeholder=""></div>            
+                </div>        
+            </form>
+        </div>
+        <div style="margin-top: 30px;margin-bottom:10px;">
+            <button id="btn_update_doc" type="button" class="btn btn-default get_score" >修&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp改</button>    
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+            <button id="btn_back_doc" type="button" class="btn btn-default button" onclick="back_doc()">返&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp回</button>
+        </div>    
+      </div>      
+      <div  id="update_pat" style="display:none;text-align: center;margin-top: 10px;">
+        <h3>患者信息修改</h3>
+        <div style="width:280px;text-align:left;margin:auto auto;padding-top:10px;">
+            <form class="form-horizontal">
+                <div class="form-group has-error">
+                    <label for="name" class="col-xs-4 control-label">*患者姓名</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_name_update" placeholder=""></div>            
+                </div>
+                <div class="form-group has-error">
+                    <label for="sex" class="col-xs-4 control-label">*性别</label>
+                    <div class="col-xs-8" style="padding-left: 0px;">
+                        <label class="radio-inline"><input type="radio" name="pat_sex_update" id="pat_sex_1" value="男"> 男性</label>
+                        <label class="radio-inline"><input type="radio" name="pat_sex_update" id="pat_sex_2" value="女"> 女性</label>
+                    </div>                
+                </div>
+                <div class="form-group has-error">
+                    <label for="age" class="col-xs-4 control-label">*年龄</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_age_update" placeholder=""></div>            
+                </div>        
+                <div class="form-group">
+                    <label for="add" class="col-xs-4 control-label">住址</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_add_update" placeholder=""></div>            
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="col-xs-4 control-label">联系电话</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_phone_update" placeholder=""></div>            
+                </div>
+                <div class="form-group has-error">
+                    <label for="ill_date" class="col-xs-4 control-label">*受伤时间</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_ill_date_update" placeholder="" readonly="readonly" ></div>            
+                </div>
+                <div class="form-group has-error">
+                    <label for="ill_type" class="col-xs-4 control-label">*受伤类型</label>
+                    <div class="col-xs-8" style="padding-left: 0px;">
+                        <select class="form-control" id="pat_ill_type_update">
+                          <option></option>                        
+                          <option>车祸</option>
+                          <option>坠落伤</option>
+                          <option>烧伤</option>
+                          <option>锐器/钝器伤</option>
+                          <option>枪击伤</option>                          
+                          <option>生活伤</option>
+                          <option>其他</option>                          
+                        </select>
+                    </div>            
+                </div>        
+                <div class="form-group">
+                    <label for="hospital" class="col-xs-4 control-label">治疗医院</label>
+                    <div class="col-xs-8" style="padding-left: 0px;"><input type="text" class="form-control" id="pat_hospital_update" placeholder=""></div>            
+                </div>    
+            </form>            
+        </div>      
+        <div style="margin-top: 30px;margin-bottom:10px;">
+            <button id="btn_update_pat" type="button" class="btn btn-default get_score" >修&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp改</button>
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <button id="btn_back_pat" type="button" class="btn btn-default button" onclick="back_pat()">返&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp回</button>
+        </div>          
+      </div>
 
     </div>
     <div class="modal fade"  id="myModal">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">温馨提示</h4>
-	      </div>
-	      <div class="modal-body"><p></p></div>
-	      <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">温馨提示</h4>
+          </div>
+          <div class="modal-body"><p></p></div>
+          <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
-  <div style="width:300px;margin:0 auto; padding:20px 40px;">
-				 <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802024111" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
-				<img src="img/beian.png" style="float:left;"/>
-				<p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京公网安备 11010802024111号</p></a>
-	</div>
-		 
+    <div style="width:300px;margin:0 auto; padding:20px 40px;">
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802024111" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+                <img src="img/beian.png" style="float:left;"/>
+                <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京公网安备 11010802024111号</p>
+            </a>    
+            <div style="width:150px;margin:0 auto;">
+                <a target="_blank" href="https://icp.chinaz.com/home/info?host=m-trauma.com" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+                    <p style="float:left;height:20px;line-height:20px;margin: 4px 0px 0px 5px; color:#939393;">京ICP备 17042220号-1</p>
+                </a>            
+            </div>            
+    </div>
+ 
 
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -364,5 +370,5 @@
     <script src="js/post.js"></script>    
     <script src="js/bootstrap-datepicker.min.js"></script>  
     <script src="js/bootstrap-datepicker.zh-CN.min.js"></script>   
-	</body>
+    </body>
 </html>
