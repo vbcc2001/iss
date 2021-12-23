@@ -355,14 +355,26 @@
                 <img src="img/beian.png" style="float:left;"/>
                 <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京公网安备 11010802024111号</p>
             </a>    
-            <div style="width:150px;margin:0 auto;padding: 10px 0px 0px 0px;">
-                <a target="_blank" href="https://icp.chinaz.com/home/info?host=m-trauma.com" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+            <div style="width:150px;margin:0 auto;padding: 10px 0px 0px 0px; display: block;" id ="trauma">
+                <a target="_blank" href="https://beian.miit.gov.cn" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
                     <p style="float:left;height:20px;line-height:20px;margin: 4px 0px 0px 5px; color:#939393;">京ICP备 17042220号-1</p>
                 </a>            
-            </div>            
+            </div>         
+            <div style="width:150px;margin:0 auto;padding: 10px 0px 0px 0px; display: none;" id ="liuhederun">
+                <a target="_blank" href="https://beian.miit.gov.cn" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+                    <p style="float:left;height:20px;line-height:20px;margin: 4px 0px 0px 5px; color:#939393;">京ICP备 17042220号-2</p>
+                </a>            
+            </div>                   
     </div>
- 
-
+    <script>
+        let hostname = window.location.hostname
+        let div_1 = document.getElementById('trauma');
+        let div_2 = document.getElementById('liuhederun');
+        if(hostname == 'www.liuhederun.com'){
+            div_1.style.display = 'none';	// 隐藏选择的元素
+            div_2.style.display = 'block';	// 以块级样式显示
+        }
+    </script>
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/json.js"></script>  
